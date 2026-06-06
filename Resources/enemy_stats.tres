@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_vqdih")
 contact_damage = 5
-knockback_force = 15.0
+knockback_force = 30.0
 flee_multiplier = 1.0
 move_speed = 4.0
 max_health = 1

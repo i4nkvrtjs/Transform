@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://csqnwssi0l2bs"]
+
+[ext_resource type="Script" uid="uid://cgup02c1dmeqn" path="res://shrine_director.gd" id="1_mge3h"]
+[ext_resource type="PackedScene" uid="uid://db6ifnv48qq1d" path="res://Scenes/shrine.tscn" id="2_o11ws"]
+
+[node name="ShrineDirector" type="Node"]
+script = ExtResource("1_mge3h")
+shrine_scene = ExtResource("2_o11ws")

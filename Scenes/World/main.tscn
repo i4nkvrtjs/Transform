@@ -3,9 +3,9 @@
 [ext_resource type="Shader" uid="uid://cmd6tuo7qvxsr" path="res://Shaders/pixelation.gdshader" id="1_23yoc"]
 [ext_resource type="PackedScene" uid="uid://ddk3s66kd0as1" path="res://Scenes/player.tscn" id="1_n1kio"]
 [ext_resource type="PackedScene" uid="uid://dtpi2o3ggc6ms" path="res://Scenes/enemy.tscn" id="2_ntgcc"]
-[ext_resource type="PackedScene" uid="uid://db6ifnv48qq1d" path="res://Scenes/shrine.tscn" id="3_qvtyt"]
 [ext_resource type="PackedScene" uid="uid://di1boeuevdk3o" path="res://Scenes/camera_rig.tscn" id="4_xhtl2"]
 [ext_resource type="PackedScene" uid="uid://dc3pcs27x45mb" path="res://Scenes/spawn_director.tscn" id="5_by2pg"]
+[ext_resource type="PackedScene" uid="uid://csqnwssi0l2bs" path="res://Scenes/shrine_director.tscn" id="6_23yoc"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7dm0k"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -137,10 +137,33 @@ texture = SubResource("NoiseTexture2D_jyfha")
 [node name="Player" parent="." instance=ExtResource("1_n1kio")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.333581, 0)
 
-[node name="Shrine" parent="." instance=ExtResource("3_qvtyt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.4683, 0.342381, 0)
-
 [node name="CameraRig" parent="." instance=ExtResource("4_xhtl2")]
 
 [node name="SpawnDirector" parent="." instance=ExtResource("5_by2pg")]
 enemy_scene = ExtResource("2_ntgcc")
+
+[node name="ShrineDirector" parent="." instance=ExtResource("6_23yoc")]
+
+[node name="ShrineSpawnPoints" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 38.551)
+
+[node name="Marker3D6" type="Marker3D" parent="ShrineSpawnPoints" groups=["shrine_spawn"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 40.8212)
+
+[node name="Marker3D4" type="Marker3D" parent="ShrineSpawnPoints" groups=["shrine_spawn"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.9773, 0, 23.403)
+
+[node name="Marker3D" type="Marker3D" parent="ShrineSpawnPoints" groups=["shrine_spawn"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.3123, 0, 0)
+
+[node name="Marker3D2" type="Marker3D" parent="ShrineSpawnPoints" groups=["shrine_spawn"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.1965, 0, -25.4103)
+
+[node name="Marker3D3" type="Marker3D" parent="ShrineSpawnPoints" groups=["shrine_spawn"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -41.8318)
+
+[node name="Marker3D5" type="Marker3D" parent="ShrineSpawnPoints" groups=["shrine_spawn"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.679, 0, -36.928)
+
+[node name="Marker3D7" type="Marker3D" parent="ShrineSpawnPoints" groups=["shrine_spawn"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.5225, 0, 8.08233)
