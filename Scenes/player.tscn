@@ -1,0 +1,32 @@
+[gd_scene load_steps=7 format=3 uid="uid://ddk3s66kd0as1"]
+
+[ext_resource type="Script" uid="uid://cxd8o5vy5hcqo" path="res://Scripts/player.gd" id="1_v0iea"]
+[ext_resource type="Resource" uid="uid://cmfwyglslb6rv" path="res://Resources/player_stats.tres" id="2_cvnsp"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f60y1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v0iea"]
+albedo_color = Color(1, 0.423529, 1, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_v0iea"]
+material = SubResource("StandardMaterial3D_v0iea")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_cvnsp"]
+radius = 1.0
+
+[node name="Player" type="CharacterBody3D" groups=["player"]]
+script = ExtResource("1_v0iea")
+stats = ExtResource("2_cvnsp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_f60y1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_v0iea")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_cvnsp")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

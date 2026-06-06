@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://db6ifnv48qq1d"]
+
+[ext_resource type="Script" uid="uid://cxqw84ju3od26" path="res://Scripts/shrine.gd" id="1_sgxto"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_vhjee"]
+height = 1.0
+radius = 1.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sgxto"]
+albedo_color = Color(1, 0.333333, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_sgxto"]
+material = SubResource("StandardMaterial3D_sgxto")
+top_radius = 1.5
+bottom_radius = 1.5
+height = 1.0
+
+[node name="Shrine" type="Area3D"]
+script = ExtResource("1_sgxto")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CylinderShape3D_vhjee")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("CylinderMesh_sgxto")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

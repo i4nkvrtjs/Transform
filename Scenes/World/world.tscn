@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbexs0jeq51ms"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e2bkl"]
+albedo_color = Color(0.835294, 0.67451, 0.721569, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_t1gg8"]
+material = SubResource("StandardMaterial3D_e2bkl")
+size = Vector2(100, 100)
+
+[node name="World" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_t1gg8")

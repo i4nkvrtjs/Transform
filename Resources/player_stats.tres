@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="PlayerStats" load_steps=2 format=3 uid="uid://cmfwyglslb6rv"]
+
+[ext_resource type="Script" uid="uid://cnjj2k4d3jacw" path="res://PlayerStats.gd" id="1_1kv1s"]
+
+[resource]
+script = ExtResource("1_1kv1s")
+transformed_duration = 10.0
+knockback_decay = 10.0
+invulnerability_time = 0.4
+hit_stun_duration = 0.2
+move_speed = 6.0
+max_health = 100
+metadata/_custom_type_script = "uid://cnjj2k4d3jacw"

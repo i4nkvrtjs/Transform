@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://dtpi2o3ggc6ms"]
+
+[ext_resource type="Script" uid="uid://bfqhvtef6vhc" path="res://Scenes/enemy.gd" id="1_hghv2"]
+[ext_resource type="Resource" uid="uid://bnvg65peqxd3j" path="res://Resources/enemy_stats.tres" id="2_1f0kj"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ne65n"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_hghv2"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_1f0kj"]
+radius = 1.0
+
+[node name="Enemy" type="CharacterBody3D" groups=["enemy"]]
+script = ExtResource("1_hghv2")
+stats = ExtResource("2_1f0kj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_ne65n")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_hghv2")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_1f0kj")

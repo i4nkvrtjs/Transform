@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dc3pcs27x45mb"]
+
+[ext_resource type="Script" uid="uid://bgbgpwpohvj0k" path="res://Scenes/spawn_director.gd" id="1_btnq0"]
+
+[node name="SpawnDirector" type="Node"]
+script = ExtResource("1_btnq0")
