@@ -10,6 +10,7 @@ enum State
 
 @export var stats : EnemyStats
 
+@onready var visuals : Node3D = $Visuals
 @onready var navigation_agent : NavigationAgent3D = (
 	$NavigationAgent3D
 )
@@ -83,6 +84,8 @@ func move_enemy():
 		global_position
 	).normalized()
 
+	update_visual_rotation(direction)
+
 	var speed := stats.move_speed
 
 	if current_state == State.FLEE:
@@ -116,4 +119,20 @@ func _on_hit_area_body_entered(body):
 	knockback_direction *
 	stats.knockback_force,
 	body.stats.hit_stun_duration
+	)
+
+func update_visual_rotation(direction : Vector3):
+
+	if direction.length_squared() < 0.01:
+		return
+
+	var target_rotation = atan2(
+		direction.x,
+		direction.z
+	)
+
+	visuals.rotation.y = lerp_angle(
+		visuals.rotation.y,
+		target_rotation,
+		10.0 * get_physics_process_delta_time()
 	)

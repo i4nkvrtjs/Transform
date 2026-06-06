@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dtpi2o3ggc6ms"]
+[gd_scene load_steps=7 format=3 uid="uid://dtpi2o3ggc6ms"]
 
 [ext_resource type="Script" uid="uid://bfqhvtef6vhc" path="res://Scenes/enemy.gd" id="1_hghv2"]
 [ext_resource type="Resource" uid="uid://bnvg65peqxd3j" path="res://Resources/enemy_stats.tres" id="2_1f0kj"]
+[ext_resource type="PackedScene" uid="uid://tc7bxaif2mt" path="res://Assets/Enemies/Enemy_1_42.blend" id="3_afpow"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ne65n"]
 
@@ -26,3 +27,8 @@ mesh = SubResource("CapsuleMesh_hghv2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("SphereShape3D_1f0kj")
+
+[node name="Visuals" type="Node3D" parent="."]
+
+[node name="Enemy_1_42" parent="Visuals" instance=ExtResource("3_afpow")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.828251, 0)

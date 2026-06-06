@@ -10,6 +10,7 @@ enum State
 
 @export var stats : PlayerStats
 
+@onready var visuals : Node3D = $Visuals
 @onready var damage_area : Area3D = $Area3D
 
 var current_state : State = State.NORMAL
@@ -20,7 +21,7 @@ var transform_timer : float = 0.0
 
 var knockback_velocity : Vector3 = Vector3.ZERO
 
-var hit_stun_timer : float = 0.5
+var hit_stun_timer : float = 0.0
 
 var invulnerability_timer : float = 0.0
 
@@ -39,6 +40,8 @@ func _physics_process(delta):
 	handle_transformation(delta)
 
 	update_hit_stun(delta)
+
+	update_invulnerability(delta)
 
 	handle_movement(delta)
 
@@ -68,6 +71,7 @@ func handle_movement(_delta):
 
 	if direction.length() > 0.0:
 		direction = direction.normalized()
+		update_visual_rotation(direction)
 
 	var move_velocity := Vector3.ZERO
 
@@ -171,3 +175,24 @@ func update_hit_stun(delta):
 
 	if hit_stun_timer > 0.0:
 		hit_stun_timer -= delta
+
+func update_invulnerability(delta):
+
+	if invulnerability_timer > 0.0:
+		invulnerability_timer -= delta
+
+func update_visual_rotation(direction : Vector3):
+
+	if direction.length_squared() < 0.01:
+		return
+
+	var target_rotation = atan2(
+		direction.x,
+		direction.z
+	)
+
+	visuals.rotation.y = lerp_angle(
+		visuals.rotation.y,
+		target_rotation,
+		10.0 * get_physics_process_delta_time()
+	)
