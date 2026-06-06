@@ -31,6 +31,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0653328, 0)
 
 [node name="Cha" parent="Visuals/Cha_42" index="0"]
 material_overlay = ExtResource("4_vgqql")
+"blend_shapes/Key 1" = 0.028
+
+[node name="Cha_001" parent="Visuals/Cha_42" index="1"]
+"blend_shapes/Key 1" = 0.028
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 
