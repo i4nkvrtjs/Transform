@@ -1,5 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://ewxpx7p2fka1"]
+[gd_scene load_steps=15 format=3 uid="uid://ewxpx7p2fka1"]
 
+[ext_resource type="Shader" uid="uid://cmd6tuo7qvxsr" path="res://Shaders/pixelation.gdshader" id="1_23yoc"]
 [ext_resource type="PackedScene" uid="uid://ddk3s66kd0as1" path="res://Scenes/player.tscn" id="1_n1kio"]
 [ext_resource type="PackedScene" uid="uid://dtpi2o3ggc6ms" path="res://Scenes/enemy.tscn" id="2_ntgcc"]
 [ext_resource type="PackedScene" uid="uid://db6ifnv48qq1d" path="res://Scenes/shrine.tscn" id="3_qvtyt"]
@@ -28,6 +29,12 @@ size = Vector3(1, 1, 7)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_h2yge"]
 size = Vector3(1, 1, 7)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_23yoc"]
+shader = ExtResource("1_23yoc")
+shader_parameter/pixel_size = 4.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_jyfha"]
 
 [node name="Main" type="Node3D"]
 
@@ -119,6 +126,13 @@ radial_initial_angle = 180.0
 nine_patch_stretch = true
 tint_under = Color(1, 1, 1, 0)
 tint_progress = Color(1, 0, 1, 1)
+
+[node name="TextureRect" type="TextureRect" parent="UI"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_23yoc")
+offset_right = 1158.0
+offset_bottom = 652.0
+texture = SubResource("NoiseTexture2D_jyfha")
 
 [node name="Player" parent="." instance=ExtResource("1_n1kio")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.333581, 0)

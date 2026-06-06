@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://ddk3s66kd0as1"]
+[gd_scene load_steps=7 format=3 uid="uid://ddk3s66kd0as1"]
 
 [ext_resource type="Script" uid="uid://cxd8o5vy5hcqo" path="res://Scripts/player.gd" id="1_v0iea"]
 [ext_resource type="Resource" uid="uid://cmfwyglslb6rv" path="res://Resources/player_stats.tres" id="2_cvnsp"]
 [ext_resource type="PackedScene" uid="uid://dhdebw803wv3h" path="res://Assets/Character/Cha_42.blend" id="3_6t5aa"]
+[ext_resource type="Material" uid="uid://brj0gf1si4c6w" path="res://Shaders/Outline.tres" id="4_vgqql"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f60y1"]
 
@@ -28,4 +29,9 @@ shape = SubResource("SphereShape3D_cvnsp")
 [node name="Cha_42" parent="Visuals" instance=ExtResource("3_6t5aa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0653328, 0)
 
+[node name="Cha" parent="Visuals/Cha_42" index="0"]
+material_overlay = ExtResource("4_vgqql")
+
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+
+[editable path="Visuals/Cha_42"]
