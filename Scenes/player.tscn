@@ -1023,13 +1023,13 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_pu2lt"]
 states/End/position = Vector2(882, 158)
-states/Start/position = Vector2(125, 158)
+states/Start/position = Vector2(90, 148)
 states/TakeDamage/node = SubResource("AnimationNodeBlendTree_x3wgy")
 states/TakeDamage/position = Vector2(344.76, 77.566)
 states/WalkCycleNormal/node = SubResource("AnimationNodeBlendTree_gymyn")
 states/WalkCycleNormal/position = Vector2(395.76, 268)
 transitions = ["TakeDamage", "WalkCycleNormal", SubResource("AnimationNodeStateMachineTransition_3smsa")]
-graph_offset = Vector2(-344.24, -48.434)
+graph_offset = Vector2(-435.098, -48.434)
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 script = ExtResource("1_v0iea")
@@ -1073,7 +1073,7 @@ bones/2/parent = 0
 bones/2/rest = Transform3D(0.157349, 0.987543, 1.18725e-07, -0.987543, 0.157349, -7.45135e-07, -7.54534e-07, 0, 1, -0.264506, 0.942607, 0.51154)
 bones/2/enabled = true
 bones/2/position = Vector3(-0.264506, 0.942607, 0.51154)
-bones/2/rotation = Quaternion(2.44882e-07, 2.8699e-07, -0.649096, 0.760707)
+bones/2/rotation = Quaternion(2.44883e-07, 2.8699e-07, -0.649096, 0.760707)
 bones/2/scale = Vector3(1, 1, 1)
 bones/3/name = "Bone.006"
 bones/3/parent = 0
@@ -1094,35 +1094,35 @@ bones/5/parent = 0
 bones/5/rest = Transform3D(1, -2.13163e-14, 2.38418e-07, 2.3158e-07, 0.237793, -0.971316, -5.66942e-08, 0.971316, 0.237793, 0.0861645, 0.433382, 0.356455)
 bones/5/enabled = true
 bones/5/position = Vector3(0.0861645, 0.433382, 0.356455)
-bones/5/rotation = Quaternion(0.617336, 9.3782e-08, 7.35923e-08, 0.7867)
+bones/5/rotation = Quaternion(0.617336, 9.37816e-08, 7.35919e-08, 0.7867)
 bones/5/scale = Vector3(1, 1, 1)
 bones/6/name = "Bone.001"
 bones/6/parent = 0
 bones/6/rest = Transform3D(1, 0, 2.38419e-07, 0, 1, 0, -2.38419e-07, 0, 1, 0, 1, 0)
 bones/6/enabled = true
 bones/6/position = Vector3(0, 1, 0)
-bones/6/rotation = Quaternion(0, 1.1921e-07, 0, 1)
+bones/6/rotation = Quaternion(2.18721e-08, 1.35579e-07, -0.0638156, 0.997962)
 bones/6/scale = Vector3(1, 1, 1)
 bones/7/name = "Bone.003"
 bones/7/parent = 6
 bones/7/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.209139, 0)
 bones/7/enabled = true
 bones/7/position = Vector3(0, 0.209139, 0)
-bones/7/rotation = Quaternion(0, 0, 0, 1)
+bones/7/rotation = Quaternion(1.50321e-08, 4.34044e-08, -0.0630491, 0.998011)
 bones/7/scale = Vector3(1, 1, 1)
 bones/8/name = "Bone.002"
 bones/8/parent = 7
 bones/8/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.209139, 0)
 bones/8/enabled = true
 bones/8/position = Vector3(0, 0.209139, 0)
-bones/8/rotation = Quaternion(0, 0, 0, 1)
+bones/8/rotation = Quaternion(3.52075e-09, 5.54987e-08, -0.0147671, 0.999891)
 bones/8/scale = Vector3(1, 1, 1)
 bones/9/name = "Bone.004"
 bones/9/parent = 8
 bones/9/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.209139, 0)
 bones/9/enabled = true
 bones/9/position = Vector3(0, 0.209139, 0)
-bones/9/rotation = Quaternion(0, 0, 0, 1)
+bones/9/rotation = Quaternion(3.34758e-08, 6.67683e-08, -0.140408, 0.990094)
 bones/9/scale = Vector3(1, 1, 1)
 
 [node name="Cha" type="MeshInstance3D" parent="Visuals/Cha_43/Armature/Skeleton3D"]
