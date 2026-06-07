@@ -32,6 +32,21 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
-_subresources={}
+_subresources={
+"materials": {
+"CHA_Black_Mat": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Character/Materials/CHA_Black_Mat.tres"
+},
+"CHA_Pink_MAT": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Character/Materials/CHA_Pink_MAT.tres"
+},
+"CHA_White_Mat": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Character/Materials/CHA_White_Mat.tres"
+}
+}
+}
 gltf/naming_version=1
 gltf/embedded_image_handling=1
