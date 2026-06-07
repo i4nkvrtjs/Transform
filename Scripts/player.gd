@@ -14,10 +14,10 @@ enum State
 @export var shrine_director_path : NodePath
 
 @onready var shrine_arrow_pivot = $ShrineArrowPivot
-@onready var animation_player : AnimationPlayer = $Visuals/Cha_43/AnimationPlayer
+@onready var animation_player : AnimationPlayer = $Visuals/Cha_42/AnimationPlayer
 @onready var visuals : Node3D = $Visuals
 @onready var damage_area : Area3D = $Area3D
-@onready var animation_tree = $Visuals/Cha_43/AnimationTree
+@onready var animation_tree = $Visuals/Cha_42/AnimationTree
 
 var state_machine : AnimationNodeStateMachinePlayback
 
@@ -216,9 +216,7 @@ func start_transformation():
 		stats.transformed_duration
 	)
 
-	animation_player.play(
-		"Transformacion_Fisica_v2"
-	)
+	state_machine.travel("Transformacion_Fisica_v2")
 
 	print("TRANSFORMED")
 
@@ -228,9 +226,7 @@ func end_transformation():
 
 	transformed_velocity = Vector3.ZERO
 
-	animation_player.play(
-		"Transformacion_Reverse"
-	)
+	state_machine.travel("Transformacion_Reverse")
 
 	print("NORMAL")
 
@@ -420,6 +416,7 @@ func start_slam():
 
 	velocity = Vector3.ZERO
 
+	state_machine.travel("Slam")
 	#animation_player.play("slam")
 
 func update_slam(delta):
