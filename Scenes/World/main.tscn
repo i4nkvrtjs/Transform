@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://ewxpx7p2fka1"]
+[gd_scene load_steps=42 format=3 uid="uid://ewxpx7p2fka1"]
 
 [ext_resource type="PackedScene" uid="uid://bphu0xmcfy156" path="res://Assets/Enviroment/Space Station/GLB format/floor-corner.glb" id="1_6jptx"]
 [ext_resource type="Shader" uid="uid://cmd6tuo7qvxsr" path="res://Shaders/pixelation.gdshader" id="1_23yoc"]
@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://6p0ign7ne348" path="res://Assets/Enviroment/Space Station/GLB format/floor-panel.glb" id="3_yteiy"]
 [ext_resource type="PackedScene" uid="uid://di1boeuevdk3o" path="res://Scenes/camera_rig.tscn" id="4_xhtl2"]
 [ext_resource type="PackedScene" uid="uid://dc3pcs27x45mb" path="res://Scenes/spawn_director.tscn" id="5_by2pg"]
-[ext_resource type="PackedScene" path="res://Scenes/shrine_director.tscn" id="6_23yoc"]
+[ext_resource type="PackedScene" uid="uid://csqnwssi0l2bs" path="res://Scenes/shrine_director.tscn" id="6_23yoc"]
 [ext_resource type="PackedScene" uid="uid://cwq0ea10kkja7" path="res://Assets/Enviroment/Space Station/GLB format/floor-detail.glb" id="10_w7l72"]
 [ext_resource type="PackedScene" uid="uid://cgdil5hr7t5om" path="res://Assets/Enviroment/Space Station/GLB format/wall-banner.glb" id="11_g3oxa"]
 [ext_resource type="PackedScene" uid="uid://bnrmcao75xr3k" path="res://Assets/Enviroment/Space Station/GLB format/wall-corner-round-banner.glb" id="12_ombbc"]
@@ -21,9 +21,13 @@
 [ext_resource type="PackedScene" uid="uid://bpa5bjf5w4dnm" path="res://Assets/Enviroment/Space Station/GLB format/pipe-ring.glb" id="19_llg4m"]
 [ext_resource type="PackedScene" uid="uid://cjsids21nnlsp" path="res://Assets/Enviroment/Space Station/GLB format/wall.glb" id="20_qggjr"]
 [ext_resource type="PackedScene" uid="uid://ee874q3vtgxe" path="res://Assets/Enviroment/Space Station/GLB format/wall-corner-round.glb" id="21_fegd5"]
+[ext_resource type="Script" uid="uid://bdy2y3lgdn7n2" path="res://Scenes/World/hud.gd" id="21_pqm0m"]
+[ext_resource type="PackedScene" uid="uid://hp8caecw684n" path="res://Scenes/floating_heal.tscn" id="22_w1pl2"]
 [ext_resource type="PackedScene" uid="uid://bibg04ladbv68" path="res://Assets/Enviroment/Space Station/GLB format/rail.glb" id="22_y76hn"]
+[ext_resource type="Texture2D" uid="uid://wivpecn2xyoo" path="res://Assets/CirculoBlanco1024x1024.png" id="23_pqm0m"]
 [ext_resource type="PackedScene" uid="uid://cg8jxla8sbimw" path="res://Assets/Enviroment/Space Station/GLB format/computer-system.glb" id="23_ytmut"]
 [ext_resource type="PackedScene" uid="uid://c3gj02j5464tq" path="res://Assets/Enviroment/Modular Space/GLB format/cables.glb" id="24_llg4m"]
+[ext_resource type="Texture2D" uid="uid://cgqmgw8f2q0og" path="res://Assets/LineaBlanca.png" id="24_w1pl2"]
 [ext_resource type="PackedScene" uid="uid://lasn4453t3sq" path="res://Assets/Enviroment/Modular Space/GLB format/template-floor-layer-hole.glb" id="25_qggjr"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7dm0k"]
@@ -66,7 +70,7 @@ shader_parameter/pixel_size = 4.0
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_jyfha"]
 
-[node name="Main2" type="Node3D"]
+[node name="Main" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_0xm2m")
@@ -982,20 +986,7 @@ shape = SubResource("BoxShape3D_fegd5")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="UI"]
-offset_left = 988.0
-offset_top = 65.0
-offset_right = 1064.0
-offset_bottom = 148.0
-max_value = 1.0
-step = 0.01
-fill_mode = 4
-radial_initial_angle = 180.0
-nine_patch_stretch = true
-tint_under = Color(1, 1, 1, 0)
-tint_progress = Color(1, 0, 1, 1)
-
-[node name="TextureRect" type="TextureRect" parent="UI"]
+[node name="Pixelation" type="TextureRect" parent="UI"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_23yoc")
 anchors_preset = 15
@@ -1004,6 +995,47 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("NoiseTexture2D_jyfha")
+
+[node name="HUD" type="Control" parent="UI" node_paths=PackedStringArray("player")]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("21_pqm0m")
+player = NodePath("../../Player")
+floating_text_scene = ExtResource("22_w1pl2")
+
+[node name="TransformTimer" type="TextureProgressBar" parent="UI/HUD"]
+layout_mode = 0
+offset_left = 999.0
+offset_top = 21.0
+offset_right = 1130.0
+offset_bottom = 151.0
+max_value = 1.0
+step = 0.01
+fill_mode = 4
+radial_initial_angle = 180.0
+nine_patch_stretch = true
+texture_under = ExtResource("23_pqm0m")
+texture_progress = ExtResource("23_pqm0m")
+tint_under = Color(1, 1, 1, 0)
+tint_progress = Color(0, 1, 0, 1)
+
+[node name="FloatingTextContainer" type="Control" parent="UI/HUD"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HealthBar" type="TextureProgressBar" parent="UI/HUD"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = -60.0
+offset_right = 445.0
+offset_bottom = 163.0
+fill_mode = 1
+nine_patch_stretch = true
+texture_under = ExtResource("24_w1pl2")
+texture_progress = ExtResource("24_w1pl2")
+tint_under = Color(1, 0, 0, 1)
+tint_progress = Color(0, 1, 0, 1)
 
 [node name="Player" parent="." instance=ExtResource("1_n1kio")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.333581, 0)
