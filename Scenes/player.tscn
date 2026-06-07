@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ddk3s66kd0as1"]
+[gd_scene load_steps=17 format=3 uid="uid://ddk3s66kd0as1"]
 
 [ext_resource type="Script" uid="uid://cxd8o5vy5hcqo" path="res://Scripts/player.gd" id="1_v0iea"]
 [ext_resource type="Resource" uid="uid://cmfwyglslb6rv" path="res://Resources/player_stats.tres" id="2_cvnsp"]
@@ -11,6 +11,56 @@ radius = 1.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vgqql"]
 albedo_color = Color(1, 0.356863, 0, 1)
+
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_6t5aa"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vgqql"]
+animation = &"Take_Damage_Eye"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fkybt"]
+animation = &"Take_Damage"
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_x3wgy"]
+graph_offset = Vector2(-716.041, -13.7846)
+nodes/Add2/node = SubResource("AnimationNodeAdd2_6t5aa")
+nodes/Add2/position = Vector2(-100, 180)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_fkybt")
+nodes/Animation/position = Vector2(-460, 100)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_vgqql")
+"nodes/Animation 2/position" = Vector2(-480, 320)
+node_connections = [&"Add2", 0, &"Animation", &"Add2", 1, &"Animation 2", &"output", 0, &"Add2"]
+
+[sub_resource type="AnimationNodeAdd3" id="AnimationNodeAdd3_6t5aa"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3smsa"]
+animation = &"Walk_cycle_phys"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8erm5"]
+animation = &"Tentacle_wiggle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_f1ek2"]
+animation = &"Walk_cycle__blendshape"
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_gymyn"]
+graph_offset = Vector2(-488.801, 53.5738)
+nodes/Add3/node = SubResource("AnimationNodeAdd3_6t5aa")
+nodes/Add3/position = Vector2(140, 180)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_f1ek2")
+nodes/Animation/position = Vector2(-180, 120)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_3smsa")
+"nodes/Animation 2/position" = Vector2(-180, 300)
+"nodes/Animation 3/node" = SubResource("AnimationNodeAnimation_8erm5")
+"nodes/Animation 3/position" = Vector2(-200, 520)
+node_connections = [&"Add3", 0, &"Animation", &"Add3", 1, &"Animation 2", &"Add3", 2, &"Animation 3", &"output", 0, &"Add3"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_pu2lt"]
+states/End/position = Vector2(882, 158)
+states/Start/position = Vector2(125, 158)
+states/TakeDamage/node = SubResource("AnimationNodeBlendTree_x3wgy")
+states/TakeDamage/position = Vector2(390.76, 97)
+states/WalkCycleNormal/node = SubResource("AnimationNodeBlendTree_gymyn")
+states/WalkCycleNormal/position = Vector2(395.76, 268)
+graph_offset = Vector2(-371.24, 0)
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 script = ExtResource("1_v0iea")
@@ -31,16 +81,17 @@ shape = SubResource("SphereShape3D_cvnsp")
 [node name="Cha_43" parent="Visuals" instance=ExtResource("4_vgqql")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.073068, 0, 0.317485)
 
-[node name="Skeleton3D" parent="Visuals/Cha_43/Armature" index="0"]
-bones/2/rotation = Quaternion(-4.93247e-08, -2.77965e-08, 0.206883, 0.978366)
-bones/3/rotation = Quaternion(-9.03881e-08, -5.09375e-08, 0.379115, 0.92535)
-bones/4/rotation = Quaternion(-5.35931e-08, -3.0202e-08, 0.224786, 0.974408)
-
 [node name="Cha" parent="Visuals/Cha_43/Armature/Skeleton3D" index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_vgqql")
 
 [node name="AnimationPlayer" parent="Visuals/Cha_43" index="1"]
 root_node = NodePath("../../Cha_43")
+
+[node name="AnimationTree" type="AnimationTree" parent="Visuals/Cha_43"]
+tree_root = SubResource("AnimationNodeStateMachine_pu2lt")
+anim_player = NodePath("../AnimationPlayer")
+parameters/TakeDamage/Add2/add_amount = 0
+parameters/WalkCycleNormal/Add3/add_amount = 1.0
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 
