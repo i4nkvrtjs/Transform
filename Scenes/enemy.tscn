@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dtpi2o3ggc6ms"]
+[gd_scene load_steps=6 format=3 uid="uid://dtpi2o3ggc6ms"]
 
 [ext_resource type="Script" uid="uid://bfqhvtef6vhc" path="res://Scenes/enemy.gd" id="1_hghv2"]
 [ext_resource type="Resource" uid="uid://bnvg65peqxd3j" path="res://Resources/enemy_stats.tres" id="2_1f0kj"]
 [ext_resource type="PackedScene" uid="uid://tc7bxaif2mt" path="res://Assets/Enemies/Enemy_1_42.blend" id="3_afpow"]
-[ext_resource type="Material" uid="uid://brj0gf1si4c6w" path="res://Shaders/Outline.tres" id="4_287tu"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ne65n"]
 
@@ -29,7 +28,10 @@ shape = SubResource("SphereShape3D_1f0kj")
 [node name="Enemy_1_42" parent="Visuals" instance=ExtResource("3_afpow")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.828251, 0)
 
-[node name="Enemy_1" parent="Visuals/Enemy_1_42" index="0"]
-material_overlay = ExtResource("4_287tu")
+[node name="Skeleton3D" parent="Visuals/Enemy_1_42/Armature" index="0"]
+bones/0/rotation = Quaternion(-3.71206e-08, 1.06778e-07, 0.0628747, 0.998021)
+bones/0/scale = Vector3(0.936001, 0.936001, 0.936001)
+bones/1/position = Vector3(-0.919233, 0.348068, 0.546864)
+bones/2/position = Vector3(0.479414, 0.610862, 0.546865)
 
 [editable path="Visuals/Enemy_1_42"]

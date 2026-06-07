@@ -8,3 +8,9 @@ class_name PlayerStats
 @export var invulnerability_time : float = 0.4
 
 @export var hit_stun_duration : float = 0.5
+
+@export var transformed_speed : float = 17.0
+
+@export var transformed_acceleration : float = 4.0
+
+@export var transformed_friction : float = 2.0

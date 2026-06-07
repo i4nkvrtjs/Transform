@@ -59,7 +59,11 @@ func _on_shrine_consumed():
 	current_shrine = null
 
 	await get_tree().create_timer(
-		randf_range(5,15)
+		randf_range(1,5)
 	).timeout
 
 	spawn_shrine()
+
+func get_current_shrine():
+
+	return current_shrine

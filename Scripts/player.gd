@@ -10,6 +10,7 @@ enum State
 
 @export var stats : PlayerStats
 
+@onready var animation_player : AnimationPlayer = $Visuals/Cha_43/AnimationPlayer
 @onready var visuals : Node3D = $Visuals
 @onready var damage_area : Area3D = $Area3D
 
@@ -25,11 +26,21 @@ var hit_stun_timer : float = 0.0
 
 var invulnerability_timer : float = 0.0
 
+var transformed_velocity := Vector3.ZERO
+
+signal health_changed(current_health, max_health)
+
+signal enemy_consumed(world_position, heal_amount)
+
 func _ready():
 
 	add_to_group("player")
 
 	current_health = stats.max_health
+	health_changed.emit(
+	current_health,
+	stats.max_health
+	)
 
 	damage_area.body_entered.connect(
 		_on_damage_area_body_entered
@@ -49,7 +60,7 @@ func _physics_process(delta):
 
 	move_and_slide()
 
-func handle_movement(_delta):
+func handle_movement(delta):
 
 	var input_dir := Vector2.ZERO
 
@@ -73,24 +84,52 @@ func handle_movement(_delta):
 		direction = direction.normalized()
 		update_visual_rotation(direction)
 
-	var move_velocity := Vector3.ZERO
+	if current_state == State.NORMAL:
 
-	if hit_stun_timer <= 0.0:
+		var move_velocity := Vector3.ZERO
 
-		move_velocity = (
-			direction *
-			stats.move_speed
+		if hit_stun_timer <= 0.0:
+
+			move_velocity = (
+				direction *
+				stats.move_speed
+			)
+
+		velocity.x = (
+			move_velocity.x +
+			knockback_velocity.x
 		)
 
-	velocity.x = (
-		move_velocity.x +
-		knockback_velocity.x
-	)
+		velocity.z = (
+			move_velocity.z +
+			knockback_velocity.z
+		)
 
-	velocity.z = (
-		move_velocity.z +
-		knockback_velocity.z
-	)
+	else:
+
+		var target_velocity = (
+			direction *
+			stats.transformed_speed
+		)
+
+		transformed_velocity = (
+			transformed_velocity.lerp(
+				target_velocity,
+				stats.transformed_acceleration * delta
+			)
+		)
+
+		if direction == Vector3.ZERO:
+
+			transformed_velocity = (
+				transformed_velocity.lerp(
+					Vector3.ZERO,
+					stats.transformed_friction * delta
+				)
+			)
+
+		velocity.x = transformed_velocity.x
+		velocity.z = transformed_velocity.z
 
 func update_knockback(delta):
 
@@ -117,12 +156,15 @@ func start_transformation():
 		stats.transformed_duration
 	)
 
+	animation_player.play("Transformacion_Fisica_v2")
+
 	print("TRANSFORMED")
 
 func end_transformation():
 
 	current_state = State.NORMAL
-
+	transformed_velocity = Vector3.ZERO
+	animation_player.play("Transformacion_Reverse")
 	print("NORMAL")
 
 func is_transformed() -> bool:
@@ -147,6 +189,29 @@ func take_damage(amount : int):
 	if current_health <= 0:
 		die()
 
+func heal(amount : int):
+
+	current_health = min(
+		current_health + amount,
+		stats.max_health
+	)
+
+	health_changed.emit(
+		current_health,
+		stats.max_health
+	)
+
+func consume_enemy(enemy):
+
+	heal(enemy.stats.heal_on_consumed)
+
+	enemy_consumed.emit(
+		enemy.global_position,
+		enemy.stats.heal_on_consumed
+	)
+
+	enemy.die()
+
 func apply_knockback(
 	force : Vector3,
 	stun_duration : float = 0.2
@@ -169,7 +234,7 @@ func _on_damage_area_body_entered(body):
 		return
 
 	if body.has_method("die"):
-		body.die()
+		consume_enemy(body)
 
 func update_hit_stun(delta):
 

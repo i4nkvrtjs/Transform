@@ -10,12 +10,15 @@ enum State
 
 @export var stats : EnemyStats
 
+@onready var animation_player : AnimationPlayer = $Visuals/Enemy_1_42/AnimationPlayer
 @onready var visuals : Node3D = $Visuals
 @onready var navigation_agent : NavigationAgent3D = (
 	$NavigationAgent3D
 )
 
 @onready var hit_area : Area3D = $Area3D
+
+var current_animation := ""
 
 var current_state : State = State.CHASE
 
@@ -26,7 +29,9 @@ func _ready():
 	player = get_tree().get_first_node_in_group(
 		"player"
 	)
-
+	
+	play_animation("Walk")
+	
 	hit_area.body_entered.connect(
 		_on_hit_area_body_entered
 	)
@@ -136,3 +141,12 @@ func update_visual_rotation(direction : Vector3):
 		target_rotation,
 		10.0 * get_physics_process_delta_time()
 	)
+
+func play_animation(anim_name : String):
+
+	if current_animation == anim_name:
+		return
+
+	current_animation = anim_name
+
+	animation_player.play(anim_name)

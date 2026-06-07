@@ -31,8 +31,12 @@ shape = SubResource("SphereShape3D_cvnsp")
 [node name="Cha_43" parent="Visuals" instance=ExtResource("4_vgqql")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.073068, 0, 0.317485)
 
+[node name="Skeleton3D" parent="Visuals/Cha_43/Armature" index="0"]
+bones/2/rotation = Quaternion(-4.93247e-08, -2.77965e-08, 0.206883, 0.978366)
+bones/3/rotation = Quaternion(-9.03881e-08, -5.09375e-08, 0.379115, 0.92535)
+bones/4/rotation = Quaternion(-5.35931e-08, -3.0202e-08, 0.224786, 0.974408)
+
 [node name="Cha" parent="Visuals/Cha_43/Armature/Skeleton3D" index="0"]
-"blend_shapes/Key 1" = 1.0
 surface_material_override/0 = SubResource("StandardMaterial3D_vgqql")
 
 [node name="AnimationPlayer" parent="Visuals/Cha_43" index="1"]
