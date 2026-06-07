@@ -416,7 +416,7 @@ func start_slam():
 
 	velocity = Vector3.ZERO
 
-	state_machine.travel("Slam")
+	state_machine.start("Slam")
 	#animation_player.play("slam")
 
 func update_slam(delta):
