@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dtpi2o3ggc6ms" path="res://Scenes/enemy.tscn" id="2_ntgcc"]
 [ext_resource type="PackedScene" uid="uid://di1boeuevdk3o" path="res://Scenes/camera_rig.tscn" id="4_xhtl2"]
 [ext_resource type="PackedScene" uid="uid://dc3pcs27x45mb" path="res://Scenes/spawn_director.tscn" id="5_by2pg"]
-[ext_resource type="PackedScene" path="res://Scenes/shrine_director.tscn" id="6_23yoc"]
+[ext_resource type="PackedScene" uid="uid://csqnwssi0l2bs" path="res://Scenes/shrine_director.tscn" id="6_23yoc"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7dm0k"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)

@@ -1,7 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://ddk3s66kd0as1"]
+[gd_scene load_steps=18 format=3 uid="uid://ddk3s66kd0as1"]
 
 [ext_resource type="Script" uid="uid://cxd8o5vy5hcqo" path="res://Scripts/player.gd" id="1_v0iea"]
 [ext_resource type="Resource" uid="uid://cmfwyglslb6rv" path="res://Resources/player_stats.tres" id="2_cvnsp"]
+[ext_resource type="PackedScene" uid="uid://for4n7el74ge" path="res://Scenes/slam_indicator.tscn" id="3_vgqql"]
 [ext_resource type="PackedScene" uid="uid://bh3vv6x25kqfg" path="res://Assets/Character/Cha_42.glb" id="4_vgqql"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f60y1"]
@@ -65,6 +66,7 @@ graph_offset = Vector2(-371.24, 0)
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 script = ExtResource("1_v0iea")
 stats = ExtResource("2_cvnsp")
+slam_indicator_scene = ExtResource("3_vgqql")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.902302, 0)

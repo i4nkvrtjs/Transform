@@ -16,3 +16,13 @@ class_name PlayerStats
 @export var transformed_friction : float = 2.0
 
 @export var transformed_braking : float = 1.0
+
+@export var dash_speed : float = 20.0
+
+@export var dash_duration : float = 0.2
+
+@export var dash_cooldown : float = 1.0
+
+@export var slam_radius : float = 5.0
+
+@export var slam_duration : float = 0.6
