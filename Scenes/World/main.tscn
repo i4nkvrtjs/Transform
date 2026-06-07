@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://ewxpx7p2fka1"]
+[gd_scene load_steps=42 format=3 uid="uid://ewxpx7p2fka1"]
 
 [ext_resource type="PackedScene" uid="uid://bphu0xmcfy156" path="res://Assets/Enviroment/Space Station/GLB format/floor-corner.glb" id="1_6jptx"]
 [ext_resource type="Shader" uid="uid://cmd6tuo7qvxsr" path="res://Shaders/pixelation.gdshader" id="1_23yoc"]
@@ -27,6 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://wivpecn2xyoo" path="res://Assets/CirculoBlanco1024x1024.png" id="23_pqm0m"]
 [ext_resource type="PackedScene" uid="uid://cg8jxla8sbimw" path="res://Assets/Enviroment/Space Station/GLB format/computer-system.glb" id="23_ytmut"]
 [ext_resource type="PackedScene" uid="uid://c3gj02j5464tq" path="res://Assets/Enviroment/Modular Space/GLB format/cables.glb" id="24_llg4m"]
+[ext_resource type="Texture2D" uid="uid://cgqmgw8f2q0og" path="res://Assets/LineaBlanca.png" id="24_w1pl2"]
 [ext_resource type="PackedScene" uid="uid://lasn4453t3sq" path="res://Assets/Enviroment/Modular Space/GLB format/template-floor-layer-hole.glb" id="25_qggjr"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7dm0k"]
@@ -1025,8 +1026,16 @@ offset_bottom = 40.0
 
 [node name="HealthBar" type="TextureProgressBar" parent="UI/HUD"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 25.0
+offset_top = -60.0
+offset_right = 445.0
+offset_bottom = 163.0
+fill_mode = 1
+nine_patch_stretch = true
+texture_under = ExtResource("24_w1pl2")
+texture_progress = ExtResource("24_w1pl2")
+tint_under = Color(1, 0, 0, 1)
+tint_progress = Color(0, 1, 0, 1)
 
 [node name="Player" parent="." instance=ExtResource("1_n1kio")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.333581, 0)
