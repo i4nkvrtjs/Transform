@@ -41,13 +41,13 @@ func spawn_shrine():
 	var spawn_point = valid_points.pick_random()
 
 	current_shrine = shrine_scene.instantiate()
+	get_parent().add_child(current_shrine)
+	print(current_shrine)
+	print(current_shrine.get_path())
 	print("Player:", player.global_position)
 	print("Spawn:", spawn_point.global_position)
 	current_shrine.global_position = spawn_point.global_position
 
-	get_parent().add_child(current_shrine)
-	print(current_shrine)
-	print(current_shrine.get_path())
 	
 
 	current_shrine.shrine_consumed.connect(

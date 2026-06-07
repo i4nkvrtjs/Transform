@@ -14,3 +14,5 @@ class_name PlayerStats
 @export var transformed_acceleration : float = 4.0
 
 @export var transformed_friction : float = 2.0
+
+@export var transformed_braking : float = 1.0

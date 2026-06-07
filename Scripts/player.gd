@@ -107,26 +107,38 @@ func handle_movement(delta):
 
 	else:
 
-		var target_velocity = (
-			direction *
-			stats.transformed_speed
-		)
+		var accel = stats.transformed_acceleration
+
+		if direction != Vector3.ZERO and transformed_velocity.length() > 0.1:
+
+			var dot_value = transformed_velocity.normalized().dot(
+				direction
+			)
+
+			if dot_value < 0.0:
+				accel = stats.transformed_braking
+
+		if direction != Vector3.ZERO:
+
+			transformed_velocity += (
+				direction *
+				accel *
+				delta
+			)
+
+			if transformed_velocity.length() > stats.transformed_speed:
+
+				transformed_velocity = (
+					transformed_velocity.normalized()
+					* stats.transformed_speed
+				)
 
 		transformed_velocity = (
-			transformed_velocity.lerp(
-				target_velocity,
-				stats.transformed_acceleration * delta
+			transformed_velocity.move_toward(
+				Vector3.ZERO,
+				stats.transformed_friction * delta
 			)
 		)
-
-		if direction == Vector3.ZERO:
-
-			transformed_velocity = (
-				transformed_velocity.lerp(
-					Vector3.ZERO,
-					stats.transformed_friction * delta
-				)
-			)
 
 		velocity.x = transformed_velocity.x
 		velocity.z = transformed_velocity.z
