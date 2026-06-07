@@ -13,6 +13,9 @@ enum State
 @onready var animation_player : AnimationPlayer = $Visuals/Cha_43/AnimationPlayer
 @onready var visuals : Node3D = $Visuals
 @onready var damage_area : Area3D = $Area3D
+@onready var animation_tree = $Visuals/Cha_43/AnimationTree
+
+var state_machine : AnimationNodeStateMachinePlayback
 
 var current_state : State = State.NORMAL
 
@@ -45,6 +48,8 @@ func _ready():
 	damage_area.body_entered.connect(
 		_on_damage_area_body_entered
 	)
+	animation_tree.active = true
+	state_machine = animation_tree.get("parameters/playback")
 
 func _physics_process(delta):
 
@@ -190,6 +195,7 @@ func take_damage(amount : int):
 
 	invulnerability_timer = stats.invulnerability_time
 	current_health -= amount
+	state_machine.travel("TakeDamage")
 
 	print(
 		"HP: ",
