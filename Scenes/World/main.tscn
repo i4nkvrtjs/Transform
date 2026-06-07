@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://ewxpx7p2fka1"]
+[gd_scene load_steps=35 format=3 uid="uid://ewxpx7p2fka1"]
 
 [ext_resource type="PackedScene" uid="uid://bphu0xmcfy156" path="res://Assets/Enviroment/Space Station/GLB format/floor-corner.glb" id="1_6jptx"]
 [ext_resource type="Shader" uid="uid://cmd6tuo7qvxsr" path="res://Shaders/pixelation.gdshader" id="1_23yoc"]
@@ -23,7 +23,8 @@
 [ext_resource type="PackedScene" uid="uid://ee874q3vtgxe" path="res://Assets/Enviroment/Space Station/GLB format/wall-corner-round.glb" id="21_fegd5"]
 [ext_resource type="PackedScene" uid="uid://bibg04ladbv68" path="res://Assets/Enviroment/Space Station/GLB format/rail.glb" id="22_y76hn"]
 [ext_resource type="PackedScene" uid="uid://cg8jxla8sbimw" path="res://Assets/Enviroment/Space Station/GLB format/computer-system.glb" id="23_ytmut"]
-[ext_resource type="PackedScene" uid="uid://cd7fxd2upvhjx" path="res://Assets/Enviroment/Space Station/GLB format/display-wall.glb" id="24_llg4m"]
+[ext_resource type="PackedScene" uid="uid://c3gj02j5464tq" path="res://Assets/Enviroment/Modular Space/GLB format/cables.glb" id="24_llg4m"]
+[ext_resource type="PackedScene" uid="uid://lasn4453t3sq" path="res://Assets/Enviroment/Modular Space/GLB format/template-floor-layer-hole.glb" id="25_qggjr"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7dm0k"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -1024,11 +1025,17 @@ transform = Transform3D(5.97109e-07, -5, -2.18557e-07, -2.5, -1.09278e-07, -4.33
 [node name="computer-system2" parent="." instance=ExtResource("23_ytmut")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 17.7582, 1.8999e-07, 0.942027)
 
-[node name="display-wall2" parent="." instance=ExtResource("24_llg4m")]
-transform = Transform3D(3.53553, 0, 3.53553, 0, 5, 0, -3.53553, 0, 3.53553, -44.8891, 6.0851, -4.19278)
+[node name="cables2" parent="." instance=ExtResource("24_llg4m")]
+transform = Transform3D(1.72813, 0, 1.00676, 0, 2, 0, -1.00676, 0, 1.72813, -45.09, 0.0574505, 10.4415)
 
-[node name="pipe4" parent="display-wall2" instance=ExtResource("17_lml7n")]
-transform = Transform3D(-1.23634e-08, -0.282843, -0.282843, 0.4, -1.74846e-08, 0, -1.23634e-08, -0.282843, 0.282843, -0.0136776, 0.264866, -0.324568)
+[node name="cables3" parent="." instance=ExtResource("24_llg4m")]
+transform = Transform3D(1.72813, 0, 1.00676, 0, 2, 0, -1.00676, 0, 1.72813, -45.09, 0.0574505, 28.5038)
 
-[node name="pipe-bend4" parent="display-wall2" instance=ExtResource("18_ytmut")]
-transform = Transform3D(-0.282843, 0.282843, -1.23634e-08, 0, -1.74846e-08, -0.4, -0.282843, -0.282843, 1.23634e-08, -0.0164266, 0.264866, -0.107002)
+[node name="cables5" parent="." instance=ExtResource("24_llg4m")]
+transform = Transform3D(1.72813, 0, 1.00676, 0, 2, 0, -1.00676, 0, 1.72813, 42.2013, 0.0574505, 9.50376)
+
+[node name="cables4" parent="." instance=ExtResource("24_llg4m")]
+transform = Transform3D(1.72813, 0, 1.00676, 0, 2, 0, -1.00676, 0, 1.72813, -45.09, 0.0574505, -28.528)
+
+[node name="template-floor-layer-hole2" parent="." instance=ExtResource("25_qggjr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.4578, -0.575704, 4.94653)
