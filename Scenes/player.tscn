@@ -2,13 +2,15 @@
 
 [ext_resource type="Script" uid="uid://cxd8o5vy5hcqo" path="res://Scripts/player.gd" id="1_v0iea"]
 [ext_resource type="Resource" uid="uid://cmfwyglslb6rv" path="res://Resources/player_stats.tres" id="2_cvnsp"]
-[ext_resource type="PackedScene" uid="uid://dhdebw803wv3h" path="res://Assets/Character/Cha_42.blend" id="3_6t5aa"]
-[ext_resource type="Material" uid="uid://brj0gf1si4c6w" path="res://Shaders/Outline.tres" id="4_vgqql"]
+[ext_resource type="PackedScene" uid="uid://bh3vv6x25kqfg" path="res://Assets/Character/Cha_42.glb" id="4_vgqql"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f60y1"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_cvnsp"]
 radius = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vgqql"]
+albedo_color = Color(1, 0.356863, 0, 1)
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 script = ExtResource("1_v0iea")
@@ -26,16 +28,16 @@ shape = SubResource("SphereShape3D_cvnsp")
 
 [node name="Visuals" type="Node3D" parent="."]
 
-[node name="Cha_42" parent="Visuals" instance=ExtResource("3_6t5aa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0653328, 0)
+[node name="Cha_43" parent="Visuals" instance=ExtResource("4_vgqql")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.073068, 0, 0.317485)
 
-[node name="Cha" parent="Visuals/Cha_42" index="0"]
-material_overlay = ExtResource("4_vgqql")
-"blend_shapes/Key 1" = 0.028
+[node name="Cha" parent="Visuals/Cha_43/Armature/Skeleton3D" index="0"]
+"blend_shapes/Key 1" = 1.0
+surface_material_override/0 = SubResource("StandardMaterial3D_vgqql")
 
-[node name="Cha_001" parent="Visuals/Cha_42" index="1"]
-"blend_shapes/Key 1" = 0.028
+[node name="AnimationPlayer" parent="Visuals/Cha_43" index="1"]
+root_node = NodePath("../../Cha_43")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 
-[editable path="Visuals/Cha_42"]
+[editable path="Visuals/Cha_43"]
