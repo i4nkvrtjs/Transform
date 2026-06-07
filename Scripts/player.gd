@@ -243,6 +243,11 @@ func take_damage(amount : int):
 
 	current_health -= amount
 
+	health_changed.emit(
+		current_health,
+		stats.max_health
+	)
+
 	state_machine.travel(
 		"TakeDamage"
 	)
