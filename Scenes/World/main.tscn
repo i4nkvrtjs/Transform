@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://6p0ign7ne348" path="res://Assets/Enviroment/Space Station/GLB format/floor-panel.glb" id="3_yteiy"]
 [ext_resource type="PackedScene" uid="uid://di1boeuevdk3o" path="res://Scenes/camera_rig.tscn" id="4_xhtl2"]
 [ext_resource type="PackedScene" uid="uid://dc3pcs27x45mb" path="res://Scenes/spawn_director.tscn" id="5_by2pg"]
-[ext_resource type="PackedScene" path="res://Scenes/shrine_director.tscn" id="6_23yoc"]
+[ext_resource type="PackedScene" uid="uid://csqnwssi0l2bs" path="res://Scenes/shrine_director.tscn" id="6_23yoc"]
 [ext_resource type="PackedScene" uid="uid://cwq0ea10kkja7" path="res://Assets/Enviroment/Space Station/GLB format/floor-detail.glb" id="10_w7l72"]
 [ext_resource type="PackedScene" uid="uid://cgdil5hr7t5om" path="res://Assets/Enviroment/Space Station/GLB format/wall-banner.glb" id="11_g3oxa"]
 [ext_resource type="PackedScene" uid="uid://bnrmcao75xr3k" path="res://Assets/Enviroment/Space Station/GLB format/wall-corner-round-banner.glb" id="12_ombbc"]
@@ -66,7 +66,7 @@ shader_parameter/pixel_size = 4.0
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_jyfha"]
 
-[node name="Main" type="Node3D"]
+[node name="Main2" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_0xm2m")
@@ -980,20 +980,6 @@ shape = SubResource("BoxShape3D_fegd5")
 transform = Transform3D(1.77803, 0, 0, 0, 1.57356, 0, 0, 0, 1, -20.6283, 1.84776, 30.7216)
 shape = SubResource("BoxShape3D_fegd5")
 
-[node name="SpawnPoints" type="Node3D" parent="."]
-
-[node name="SpawnA" type="Marker3D" parent="SpawnPoints" groups=["spawn_point"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.5062, 0.3078, 0)
-
-[node name="SpawnC" type="Marker3D" parent="SpawnPoints" groups=["spawn_point"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.13831, 0.375458, -34.2126)
-
-[node name="SpawnD" type="Marker3D" parent="SpawnPoints" groups=["spawn_point"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.8669, 0, 0)
-
-[node name="SpawnA2" type="Marker3D" parent="SpawnPoints" groups=["spawn_point"]]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.30925, 0.3078, -36.3121)
-
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="UI"]
@@ -1026,8 +1012,10 @@ shrine_director_path = NodePath("../ShrineDirector")
 [node name="CameraRig" parent="." instance=ExtResource("4_xhtl2")]
 visible = false
 
-[node name="SpawnDirector" parent="." instance=ExtResource("5_by2pg")]
+[node name="SpawnDirector" parent="." node_paths=PackedStringArray("player", "camera") instance=ExtResource("5_by2pg")]
 enemy_scene = ExtResource("2_ntgcc")
+player = NodePath("../Player")
+camera = NodePath("../CameraRig/Camera3D")
 
 [node name="ShrineDirector" parent="." instance=ExtResource("6_23yoc")]
 
@@ -1035,28 +1023,28 @@ enemy_scene = ExtResource("2_ntgcc")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 38.551)
 
 [node name="Marker3D4" type="Marker3D" parent="ShrineSpawnPoints" groups=["shrine_spawn"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.9773, 0, 7.32567)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.1807, 0, 0.75766)
 
 [node name="Marker3D" type="Marker3D" parent="ShrineSpawnPoints" groups=["shrine_spawn"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.3123, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.959, 0, -32.2857)
 
 [node name="Marker3D2" type="Marker3D" parent="ShrineSpawnPoints" groups=["shrine_spawn"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.1965, 0, -25.4103)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.6475, 0, -30.0813)
 
 [node name="Marker3D3" type="Marker3D" parent="ShrineSpawnPoints" groups=["shrine_spawn"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.0581, 0, -71.135)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.6584, 0, -71.135)
 
 [node name="Marker3D5" type="Marker3D" parent="ShrineSpawnPoints" groups=["shrine_spawn"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.679, 0, -36.928)
 
 [node name="Marker3D8" type="Marker3D" parent="ShrineSpawnPoints" groups=["shrine_spawn"]]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 36.9567, 0, -6.78098)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.33412, 0, -6.78098)
 
 [node name="Marker3D9" type="Marker3D" parent="ShrineSpawnPoints" groups=["shrine_spawn"]]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 42.5674, 0, -70.3342)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 36.4319, 0, -70.3342)
 
 [node name="Marker3D10" type="Marker3D" parent="ShrineSpawnPoints" groups=["shrine_spawn"]]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 35.2417, 0, -77.6692)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -38.0301, 0, -35.3254)
 
 [node name="Marker3D11" type="Marker3D" parent="ShrineSpawnPoints" groups=["shrine_spawn"]]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.83145, 0, -68.5534)
@@ -1064,8 +1052,42 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.8314
 [node name="Marker3D12" type="Marker3D" parent="ShrineSpawnPoints" groups=["shrine_spawn"]]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -35.8933, 0, -4.29877)
 
-[node name="Marker3D13" type="Marker3D" parent="ShrineSpawnPoints" groups=["shrine_spawn"]]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.68625, 0, 44.666)
+[node name="SpawnPoints" type="Node3D" parent="."]
 
-[node name="Marker3D14" type="Marker3D" parent="ShrineSpawnPoints" groups=["shrine_spawn"]]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 33.2675, 0, -6.72548)
+[node name="SpawnPoint01" type="Marker3D" parent="SpawnPoints" groups=["spawn_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.4096, 0.3078, 4.88971)
+
+[node name="SpawnPoint02" type="Marker3D" parent="SpawnPoints" groups=["spawn_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.7188, 0.375458, -23.7824)
+
+[node name="SpawnPoint03" type="Marker3D" parent="SpawnPoints" groups=["spawn_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.9579, 0, 38.5196)
+
+[node name="SpawnPoint04" type="Marker3D" parent="SpawnPoints" groups=["spawn_point"]]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.30925, 0.3078, -36.3121)
+
+[node name="SpawnPoint05" type="Marker3D" parent="SpawnPoints" groups=["spawn_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.44592, 0, 0)
+
+[node name="SpawnPoint06" type="Marker3D" parent="SpawnPoints" groups=["spawn_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 27.3471)
+
+[node name="SpawnPoint07" type="Marker3D" parent="SpawnPoints" groups=["spawn_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.6446, 0, 31.3977)
+
+[node name="SpawnPoint08" type="Marker3D" parent="SpawnPoints" groups=["spawn_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.4869, 0, 0)
+
+[node name="SpawnPoint09" type="Marker3D" parent="SpawnPoints" groups=["spawn_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.9494, 0, -42.0547)
+
+[node name="SpawnPoint10" type="Marker3D" parent="SpawnPoints" groups=["spawn_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.9179, 0, 0)
+
+[node name="SpawnPoint11" type="Marker3D" parent="SpawnPoints" groups=["spawn_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.7647, 0, 21.2505)
+
+[node name="SpawnPoint12" type="Marker3D" parent="SpawnPoints" groups=["spawn_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.866, 0, 38.6875)
+
+[editable path="CameraRig"]
