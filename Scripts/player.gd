@@ -11,7 +11,9 @@ enum State
 
 @export var stats : PlayerStats
 @export var slam_indicator_scene : PackedScene
+@export var shrine_director_path : NodePath
 
+@onready var shrine_arrow_pivot = $ShrineArrowPivot
 @onready var animation_player : AnimationPlayer = $Visuals/Cha_43/AnimationPlayer
 @onready var visuals : Node3D = $Visuals
 @onready var damage_area : Area3D = $Area3D
@@ -43,6 +45,8 @@ var slam_timer := 0.0
 
 var slam_active:= false
 
+var shrine_director
+
 signal health_changed(current_health, max_health)
 
 signal enemy_consumed(world_position, heal_amount)
@@ -52,6 +56,8 @@ func _ready():
 	add_to_group("player")
 
 	current_health = stats.max_health
+
+	shrine_director = get_node_or_null(shrine_director_path)
 
 	health_changed.emit(
 		current_health,
@@ -87,6 +93,8 @@ func _physics_process(delta):
 	update_slam(delta)
 
 	update_knockback(delta)
+
+	update_shrine_arrow()
 
 	move_and_slide()
 
@@ -456,3 +464,43 @@ func update_dash_cooldown(delta):
 	if dash_cooldown_timer > 0.0:
 
 		dash_cooldown_timer -= delta
+
+func update_shrine_arrow():
+
+	if shrine_director == null:
+		return
+
+	var shrine = shrine_director.get_current_shrine()
+
+	if shrine == null:
+
+		shrine_arrow_pivot.visible = false
+
+		return
+
+	shrine_arrow_pivot.visible = true
+
+	var direction = (
+		shrine.global_position -
+		global_position
+	)
+
+	direction.y = 0
+
+	if direction.length_squared() < 0.01:
+		return
+
+	shrine_arrow_pivot.look_at(
+		global_position + direction,
+		Vector3.UP
+	)
+
+	var time = (
+		Time.get_ticks_msec()
+		* 0.001
+	)
+
+	shrine_arrow_pivot.position.y = (
+		3.0 +
+		sin(time * 4.0) * 0.25
+	)

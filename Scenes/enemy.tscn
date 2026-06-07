@@ -28,13 +28,4 @@ shape = SubResource("SphereShape3D_1f0kj")
 [node name="Enemy_1_42" parent="Visuals" instance=ExtResource("3_afpow")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.828251, 0)
 
-[node name="Skeleton3D" parent="Visuals/Enemy_1_42/Armature" index="0"]
-bones/0/rotation = Quaternion(-2.98023e-08, 1.19209e-07, -2.52435e-29, 1)
-bones/1/position = Vector3(-0.919233, 0.348068, 0.546864)
-bones/1/rotation = Quaternion(-3.55271e-15, -1.19209e-07, 1.00974e-28, 1)
-bones/2/position = Vector3(0.479414, 0.610862, 0.546865)
-bones/2/rotation = Quaternion(-3.55271e-15, -1.19209e-07, 1.00974e-28, 1)
-bones/3/position = Vector3(-0.267739, 0.777827, 0.720436)
-bones/3/rotation = Quaternion(0.650195, -0.0857074, 0.116721, 0.74584)
-
 [editable path="Visuals/Enemy_1_42"]
