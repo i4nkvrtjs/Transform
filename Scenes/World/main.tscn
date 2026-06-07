@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://6p0ign7ne348" path="res://Assets/Enviroment/Space Station/GLB format/floor-panel.glb" id="3_yteiy"]
 [ext_resource type="PackedScene" uid="uid://di1boeuevdk3o" path="res://Scenes/camera_rig.tscn" id="4_xhtl2"]
 [ext_resource type="PackedScene" uid="uid://dc3pcs27x45mb" path="res://Scenes/spawn_director.tscn" id="5_by2pg"]
-[ext_resource type="PackedScene" path="res://Scenes/shrine_director.tscn" id="6_23yoc"]
+[ext_resource type="PackedScene" uid="uid://csqnwssi0l2bs" path="res://Scenes/shrine_director.tscn" id="6_23yoc"]
 [ext_resource type="PackedScene" uid="uid://cwq0ea10kkja7" path="res://Assets/Enviroment/Space Station/GLB format/floor-detail.glb" id="10_w7l72"]
 [ext_resource type="PackedScene" uid="uid://cgdil5hr7t5om" path="res://Assets/Enviroment/Space Station/GLB format/wall-banner.glb" id="11_g3oxa"]
 [ext_resource type="PackedScene" uid="uid://bnrmcao75xr3k" path="res://Assets/Enviroment/Space Station/GLB format/wall-corner-round-banner.glb" id="12_ombbc"]
@@ -456,6 +456,7 @@ texture = SubResource("NoiseTexture2D_jyfha")
 
 [node name="Player" parent="." instance=ExtResource("1_n1kio")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.333581, 0)
+shrine_director_path = NodePath("../ShrineDirector")
 
 [node name="CameraRig" parent="." instance=ExtResource("4_xhtl2")]
 visible = false

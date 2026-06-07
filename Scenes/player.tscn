@@ -1,9 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://ddk3s66kd0as1"]
+[gd_scene load_steps=19 format=3 uid="uid://ddk3s66kd0as1"]
 
 [ext_resource type="Script" uid="uid://cxd8o5vy5hcqo" path="res://Scripts/player.gd" id="1_v0iea"]
 [ext_resource type="Resource" uid="uid://cmfwyglslb6rv" path="res://Resources/player_stats.tres" id="2_cvnsp"]
 [ext_resource type="PackedScene" uid="uid://for4n7el74ge" path="res://Scenes/slam_indicator.tscn" id="3_vgqql"]
 [ext_resource type="PackedScene" uid="uid://bh3vv6x25kqfg" path="res://Assets/Character/Cha_42.glb" id="4_vgqql"]
+[ext_resource type="PackedScene" uid="uid://bs2eh3vbkg266" path="res://Scenes/flecha_verde_inherited.tscn" id="5_fkybt"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f60y1"]
 
@@ -94,6 +95,13 @@ tree_root = SubResource("AnimationNodeStateMachine_pu2lt")
 anim_player = NodePath("../AnimationPlayer")
 parameters/TakeDamage/Add2/add_amount = 0
 parameters/WalkCycleNormal/Add3/add_amount = 1.0
+
+[node name="ShrineArrowPivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+
+[node name="ShrineArrow" type="Node3D" parent="ShrineArrowPivot"]
+
+[node name="Flecha_Verde" parent="ShrineArrowPivot/ShrineArrow" instance=ExtResource("5_fkybt")]
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 
