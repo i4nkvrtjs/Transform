@@ -6,8 +6,7 @@ enum State
 {
 	NORMAL,
 	TRANSFORMED,
-	DASHING,
-	JUMP_ATTACK
+	DASHING
 }
 
 @export var stats : PlayerStats
@@ -41,6 +40,8 @@ var dash_cooldown_timer := 0.0
 var dash_direction := Vector3.ZERO
 
 var slam_timer := 0.0
+
+var slam_active:= false
 
 signal health_changed(current_health, max_health)
 
@@ -92,9 +93,6 @@ func _physics_process(delta):
 func handle_movement(delta):
 
 	if current_state == State.DASHING:
-		return
-
-	if current_state == State.JUMP_ATTACK:
 		return
 
 	var input_dir := Vector2.ZERO
@@ -230,10 +228,7 @@ func end_transformation():
 
 func is_transformed() -> bool:
 
-	return current_state in [
-		State.TRANSFORMED,
-		State.JUMP_ATTACK
-	]
+	return current_state == State.TRANSFORMED
 
 func take_damage(amount : int):
 
@@ -408,10 +403,10 @@ func update_dash(delta):
 
 func start_slam():
 
-	if current_state != State.TRANSFORMED:
+	if slam_active:
 		return
 
-	current_state = State.JUMP_ATTACK
+	slam_active = true
 
 	slam_timer = stats.slam_duration
 
@@ -421,7 +416,7 @@ func start_slam():
 
 func update_slam(delta):
 
-	if current_state != State.JUMP_ATTACK:
+	if !slam_active:
 		return
 
 	slam_timer -= delta
@@ -429,7 +424,7 @@ func update_slam(delta):
 	if slam_timer <= 0.0:
 
 		do_slam_damage()
-
+		slam_active = false
 		current_state = State.TRANSFORMED
 
 func do_slam_damage():
