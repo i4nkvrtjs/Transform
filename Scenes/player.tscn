@@ -115,7 +115,7 @@ bind/9/bone = -1
 bind/9/pose = Transform3D(1, 0, -2.38419e-07, 0, 1, 0, 2.38419e-07, 0, 1, 0, -1.62742, 0)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_igrcy"]
-albedo_color = Color(0.513726, 0.823529, 0.901961, 1)
+albedo_color = Color(0, 0.690196, 0.843137, 1)
 
 [sub_resource type="Animation" id="Animation_3smsa"]
 length = 0.001
@@ -127,7 +127,7 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0.513726, -0.104167, 0, 0.104167, 0),
+"points": PackedFloat32Array(0, -0.0005, 0, 0.0005, 0),
 "times": PackedFloat32Array(0)
 }
 tracks/1/type = "bezier"
@@ -138,7 +138,7 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0.823529, -0.104167, 0, 0.104167, 0),
+"points": PackedFloat32Array(0.690196, -0.0005, 0, 0.0005, 0),
 "times": PackedFloat32Array(0)
 }
 tracks/2/type = "bezier"
@@ -149,7 +149,7 @@ tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0.901961, -0.104167, 0, 0.104167, 0),
+"points": PackedFloat32Array(0.843137, -0.0005, 0, 0.0005, 0),
 "times": PackedFloat32Array(0)
 }
 tracks/3/type = "bezier"
@@ -160,7 +160,7 @@ tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1, -0.104167, 0, 0.104167, 0),
+"points": PackedFloat32Array(1, -0.0005, 0, 0.0005, 0),
 "times": PackedFloat32Array(0)
 }
 
@@ -998,7 +998,7 @@ tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/keys = {
 "handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0.513726, -0.208334, 0, 0.208334, 0, 0.2, -0.208334, 0, 0.208334, 0),
+"points": PackedFloat32Array(0, -0.208334, 0, 0.208334, 0, 0.2, -0.208334, 0, 0.208334, 0),
 "times": PackedFloat32Array(0, 0.416667)
 }
 tracks/19/type = "bezier"
@@ -1009,7 +1009,7 @@ tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/keys = {
 "handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0.823529, -0.208334, 0, 0.208334, 0, 1, -0.208334, 0, 0.208334, 0),
+"points": PackedFloat32Array(0.690196, -0.208334, 0, 0.208334, 0, 1, -0.208334, 0, 0.208334, 0),
 "times": PackedFloat32Array(0, 0.416667)
 }
 tracks/20/type = "bezier"
@@ -1020,7 +1020,7 @@ tracks/20/interp = 1
 tracks/20/loop_wrap = true
 tracks/20/keys = {
 "handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0.901961, -0.208334, 0, 0.208334, 0, 0, -0.208334, 0, 0.208334, 0),
+"points": PackedFloat32Array(0.843137, -0.208334, 0, 0.208334, 0, 0, -0.208334, 0, 0.208334, 0),
 "times": PackedFloat32Array(0, 0.416667)
 }
 tracks/21/type = "bezier"
@@ -1172,7 +1172,7 @@ tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/keys = {
 "handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0.2, -0.208334, 0, 0.208334, 0, 0.513726, -0.208334, 0, 0.208334, 0),
+"points": PackedFloat32Array(0.2, -0.208334, 0, 0.208334, 0, 0, -0.208334, 0, 0.208334, 0),
 "times": PackedFloat32Array(0, 0.416667)
 }
 tracks/19/type = "bezier"
@@ -1183,7 +1183,7 @@ tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/keys = {
 "handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(1, -0.208334, 0, 0.208334, 0, 0.823529, -0.208334, 0, 0.208334, 0),
+"points": PackedFloat32Array(1, -0.208334, 0, 0.208334, 0, 0.690196, -0.208334, 0, 0.208334, 0),
 "times": PackedFloat32Array(0, 0.416667)
 }
 tracks/20/type = "bezier"
@@ -1194,7 +1194,7 @@ tracks/20/interp = 1
 tracks/20/loop_wrap = true
 tracks/20/keys = {
 "handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.208334, 0, 0.208334, 0, 0.901961, -0.208334, 0, 0.208334, 0),
+"points": PackedFloat32Array(0, -0.208334, 0, 0.208334, 0, 0.843137, -0.208334, 0, 0.208334, 0),
 "times": PackedFloat32Array(0, 0.416667)
 }
 tracks/21/type = "bezier"
@@ -1516,7 +1516,7 @@ animation = &"Tentacle_wiggle"
 animation = &"Walk_cycle__blendshape"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_gymyn"]
-graph_offset = Vector2(-421.901, 52.2738)
+graph_offset = Vector2(-405.995, -6.90855)
 nodes/Add3/node = SubResource("AnimationNodeAdd3_6t5aa")
 nodes/Add3/position = Vector2(140, 180)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_f1ek2")
@@ -1623,7 +1623,7 @@ bones/2/parent = 0
 bones/2/rest = Transform3D(0.157349, 0.987543, 1.18725e-07, -0.987543, 0.157349, -7.45135e-07, -7.54534e-07, 0, 1, -0.264506, 0.942607, 0.51154)
 bones/2/enabled = true
 bones/2/position = Vector3(-0.264506, 0.942607, 0.51154)
-bones/2/rotation = Quaternion(2.44883e-07, 2.8699e-07, -0.649096, 0.760707)
+bones/2/rotation = Quaternion(2.44883e-07, 2.8699e-07, -0.649096, 0.760706)
 bones/2/scale = Vector3(1, 1, 1)
 bones/3/name = "Bone.006"
 bones/3/parent = 0
@@ -1679,7 +1679,7 @@ bones/9/scale = Vector3(1, 1, 1)
 material_overlay = ExtResource("5_fd4e3")
 mesh = SubResource("ArrayMesh_lfejg")
 skin = SubResource("Skin_el200")
-"blend_shapes/Key 1" = 1.0
+"blend_shapes/Key 1" = 0.0
 "blend_shapes/Key 2" = 1.0
 surface_material_override/0 = SubResource("StandardMaterial3D_igrcy")
 
