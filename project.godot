@@ -11,10 +11,14 @@ config_version=5
 [application]
 
 config/name="Transform"
-run/main_scene="uid://ewxpx7p2fka1"
+run/main_scene="uid://biqmei2qwveb7"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="uid://cfu1vda7nq4c7"
 config/windows_native_icon="res://Assets/Iconos/SlimeICON.ico"
+
+[autoload]
+
+GameData="*res://Scripts/GameData.gd"
 
 [display]
 

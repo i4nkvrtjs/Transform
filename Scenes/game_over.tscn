@@ -1,0 +1,67 @@
+[gd_scene load_steps=4 format=3 uid="uid://fl8yppvpylmp"]
+
+[ext_resource type="Script" uid="uid://bx2mct1g6jsmy" path="res://Scenes/game_over.gd" id="1_8fo1c"]
+[ext_resource type="Texture2D" uid="uid://b5v077hrwuaji" path="res://Assets/Screens/DeathScreen.png" id="1_ojehl"]
+[ext_resource type="AudioStream" uid="uid://dujqbdrv1sxhd" path="res://Assets/Music/pakman syhnth wave.wav" id="3_ek8ke"]
+
+[node name="GameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8fo1c")
+
+[node name="Backgroud" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.00008
+anchor_bottom = 0.999556
+offset_right = -0.160034
+offset_bottom = -0.52002
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ojehl")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ScoreLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.510938
+anchor_top = 0.143519
+anchor_right = 0.510938
+anchor_bottom = 0.143519
+offset_left = -224.0
+offset_right = 224.0
+offset_bottom = 144.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 105
+text = "SCORE: 0"
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.794792
+anchor_top = 0.733333
+anchor_right = 0.935125
+anchor_bottom = 0.858333
+offset_right = 0.559982
+metadata/_edit_use_anchors_ = true
+
+[node name="RetryButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.732813
+anchor_top = 0.70463
+anchor_right = 0.945833
+anchor_bottom = 0.860185
+offset_right = 8.0
+offset_bottom = 8.0
+text = "RETRY"
+metadata/_edit_use_anchors_ = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ek8ke")
