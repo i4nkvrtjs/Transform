@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://6p0ign7ne348" path="res://Assets/Enviroment/Space Station/GLB format/floor-panel.glb" id="3_yteiy"]
 [ext_resource type="PackedScene" uid="uid://di1boeuevdk3o" path="res://Scenes/camera_rig.tscn" id="4_xhtl2"]
 [ext_resource type="PackedScene" uid="uid://dc3pcs27x45mb" path="res://Scenes/spawn_director.tscn" id="5_by2pg"]
-[ext_resource type="PackedScene" path="res://Scenes/shrine_director.tscn" id="6_23yoc"]
+[ext_resource type="PackedScene" uid="uid://csqnwssi0l2bs" path="res://Scenes/shrine_director.tscn" id="6_23yoc"]
 [ext_resource type="PackedScene" uid="uid://cwq0ea10kkja7" path="res://Assets/Enviroment/Space Station/GLB format/floor-detail.glb" id="10_w7l72"]
 [ext_resource type="PackedScene" uid="uid://cgdil5hr7t5om" path="res://Assets/Enviroment/Space Station/GLB format/wall-banner.glb" id="11_g3oxa"]
 [ext_resource type="PackedScene" uid="uid://bnrmcao75xr3k" path="res://Assets/Enviroment/Space Station/GLB format/wall-corner-round-banner.glb" id="12_ombbc"]
@@ -29,7 +29,7 @@
 [ext_resource type="Texture2D" uid="uid://cgqmgw8f2q0og" path="res://Assets/LineaBlanca.png" id="24_w1pl2"]
 [ext_resource type="PackedScene" uid="uid://lasn4453t3sq" path="res://Assets/Enviroment/Modular Space/GLB format/template-floor-layer-hole.glb" id="25_qggjr"]
 [ext_resource type="Texture2D" uid="uid://dsisdx58n37m7" path="res://Assets/Screens/Transformacion_Overlay.png" id="26_p7lpm"]
-[ext_resource type="Script" path="res://Scenes/World/music_manager.gd" id="30_p7lpm"]
+[ext_resource type="Script" uid="uid://brjno3ywaqxso" path="res://Scenes/World/music_manager.gd" id="30_p7lpm"]
 [ext_resource type="AudioStream" uid="uid://5tpwgonvilxr" path="res://Assets/Music/PAKMAN PROYEKT.wav" id="31_4ra0o"]
 [ext_resource type="AudioStream" uid="uid://dg114ix26jdm3" path="res://Assets/Music/PAKMAN PROYEKT2.wav" id="32_bqd5y"]
 
