@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://ewxpx7p2fka1"]
+[gd_scene load_steps=48 format=3 uid="uid://ewxpx7p2fka1"]
 
 [ext_resource type="PackedScene" uid="uid://bphu0xmcfy156" path="res://Assets/Enviroment/Space Station/GLB format/floor-corner.glb" id="1_6jptx"]
 [ext_resource type="Shader" uid="uid://cmd6tuo7qvxsr" path="res://Shaders/pixelation.gdshader" id="1_23yoc"]
@@ -25,11 +25,10 @@
 [ext_resource type="PackedScene" uid="uid://hp8caecw684n" path="res://Scenes/floating_heal.tscn" id="22_w1pl2"]
 [ext_resource type="PackedScene" uid="uid://bibg04ladbv68" path="res://Assets/Enviroment/Space Station/GLB format/rail.glb" id="22_y76hn"]
 [ext_resource type="PackedScene" uid="uid://cg8jxla8sbimw" path="res://Assets/Enviroment/Space Station/GLB format/computer-system.glb" id="23_ytmut"]
-[ext_resource type="Texture2D" uid="uid://cls1ag15qsquu" path="res://Assets/Screens/TUTORIAL.png" id="24_4ra0o"]
 [ext_resource type="Script" uid="uid://pk36rfdu4dv0" path="res://Scenes/World/tutorial_overlay.gd" id="24_6ny57"]
 [ext_resource type="PackedScene" uid="uid://c3gj02j5464tq" path="res://Assets/Enviroment/Modular Space/GLB format/cables.glb" id="24_llg4m"]
 [ext_resource type="Texture2D" uid="uid://cgqmgw8f2q0og" path="res://Assets/LineaBlanca.png" id="24_w1pl2"]
-[ext_resource type="Texture2D" uid="uid://dbaasvemm2syq" path="res://Assets/Screens/CONTINUAR.png" id="25_bqd5y"]
+[ext_resource type="Texture2D" uid="uid://dgrvyn3b5nbqc" path="res://Assets/Screens/TUTORIALv2.png" id="25_bqd5y"]
 [ext_resource type="PackedScene" uid="uid://lasn4453t3sq" path="res://Assets/Enviroment/Modular Space/GLB format/template-floor-layer-hole.glb" id="25_qggjr"]
 [ext_resource type="Texture2D" uid="uid://dsisdx58n37m7" path="res://Assets/Screens/Transformacion_Overlay.png" id="26_p7lpm"]
 [ext_resource type="AudioStream" uid="uid://dmw2lmnby6qwx" path="res://Assets/Music/PAKMAN PROYEKT 3.0 - chikito.wav" id="30_4ra0o"]
@@ -1052,24 +1051,14 @@ script = ExtResource("24_6ny57")
 [node name="TextureRect" type="TextureRect" parent="UI/TutorialOverlay"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.140104
+anchor_left = 0.129167
 anchor_top = 0.106481
-anchor_right = 0.886458
-anchor_bottom = 0.801852
+anchor_right = 0.869271
+anchor_bottom = 0.871296
 offset_right = -0.00012207
 offset_bottom = -6.10352e-05
-texture = ExtResource("24_4ra0o")
-expand_mode = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="Continue" type="TextureRect" parent="UI/TutorialOverlay"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.366146
-anchor_top = 0.743519
-anchor_right = 0.632812
-anchor_bottom = 0.993519
 texture = ExtResource("25_bqd5y")
+expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="Player" parent="." instance=ExtResource("1_n1kio")]
