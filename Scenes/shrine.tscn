@@ -21,6 +21,11 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 [node name="container-flat" parent="Pastillas" index="0"]
 material_overlay = ExtResource("3_gl0vf")
 
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.72557, 0)
+light_color = Color(0, 1, 0, 1)
+light_energy = 5.0
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 
 [editable path="Pastillas"]
