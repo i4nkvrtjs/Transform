@@ -73,6 +73,8 @@ var score : int = 0
 
 var visual_base_scale : Vector3 = Vector3.ONE
 
+var overlay_tween: Tween
+
 signal score_changed(score)
 
 signal health_changed(current_health, max_health)
@@ -126,6 +128,7 @@ func _ready():
 	timer_mesh.material_override = material
 
 	timer_mesh.visible = false
+	overlay_transformacion.modulate.a = 0.0
 	overlay_transformacion.visible = false 
 
 func _physics_process(delta):
@@ -289,6 +292,11 @@ func start_transformation():
 		shrine_director.remove_current_shrine()
 
 	state_machine.travel("Transformacion_Fisica_v2")
+	if overlay_tween and overlay_tween.is_running():
+		overlay_tween.kill()
+	overlay_transformacion.visible = true
+	overlay_tween = create_tween()
+	overlay_tween.tween_property(overlay_transformacion, "modulate:a", 1.0, 2.0).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 
 func end_transformation():
 
@@ -301,6 +309,10 @@ func end_transformation():
 	shrine_arrow_pivot.visible = true
 	overlay_transformacion.visible = false 
 	state_machine.travel("Transformacion_Reverse")
+	if overlay_tween and overlay_tween.is_running():
+		overlay_tween.kill()
+	overlay_tween = create_tween()
+	overlay_tween.tween_property(overlay_transformacion, "modulate:a", 0.0, 2.0).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN)
 
 func is_transformed() -> bool:
 
