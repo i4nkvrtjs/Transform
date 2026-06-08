@@ -16,10 +16,9 @@ script = ExtResource("1_8fo1c")
 [node name="Backgroud" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 1.00008
-anchor_bottom = 0.999556
-offset_right = -0.160034
-offset_bottom = -0.52002
+anchor_right = 1.0
+anchor_bottom = 0.999926
+offset_bottom = 0.0799561
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_ojehl")
