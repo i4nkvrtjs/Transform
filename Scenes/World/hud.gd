@@ -16,12 +16,21 @@ extends Control
 
 func _ready():
 
+	player.health_changed.connect(
+		_on_health_changed
+	)
+
 	player.score_changed.connect(
 		_on_score_changed
 	)
 
 	player.enemy_consumed.connect(
 		_on_enemy_consumed
+	)
+	
+	_on_health_changed(
+		player.current_health,
+		player.stats.max_health
 	)
 
 func _process(_delta):
@@ -90,3 +99,28 @@ func update_transform_timer():
 	transform_timer.value = (
 		player.transform_timer
 	)
+
+	var camera = (
+		get_viewport().get_camera_3d()
+	)
+
+	if camera == null:
+		return
+
+	var screen_pos = (
+		camera.unproject_position(
+			player.global_position
+		)
+	)
+
+	transform_timer.position = (
+		screen_pos
+		+ Vector2(70, -180)
+	)
+
+func _on_health_changed(
+	current_health,
+	max_health
+):
+	health_bar.max_value = max_health
+	health_bar.value = current_health

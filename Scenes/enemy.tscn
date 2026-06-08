@@ -6,25 +6,33 @@
 [ext_resource type="Material" uid="uid://brj0gf1si4c6w" path="res://Shaders/Outline.tres" id="4_287tu"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ne65n"]
+height = 2.5
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_1f0kj"]
-radius = 1.0
+radius = 2.0
 
 [node name="Enemy" type="CharacterBody3D" groups=["enemy"]]
 script = ExtResource("1_hghv2")
 stats = ExtResource("2_1f0kj")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.0111698, -0.999938, 0, 0.999938, -0.0111698, 0, 1, 0.810755)
 shape = SubResource("CapsuleShape3D_ne65n")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+path_max_distance = 10.01
+avoidance_enabled = true
+radius = 1.0
+max_neighbors = 20
 
 [node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("SphereShape3D_1f0kj")
 
 [node name="Visuals" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="Enemy_1_42" parent="Visuals" instance=ExtResource("3_afpow")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.828251, 0)
