@@ -37,7 +37,7 @@ var touching_enemies : Array = []
 
 var damage_tick_timer : float = 0.0
 
-var damage_tick_interval : float = 0.25
+var damage_tick_interval : float = 0.1
 
 var camera_shake
 
@@ -678,6 +678,8 @@ func update_contact_damage(delta):
 
 	var total_damage := 0
 
+	var knockback_direction := Vector3.ZERO
+
 	for enemy in touching_enemies:
 
 		if !is_instance_valid(enemy):
@@ -685,4 +687,17 @@ func update_contact_damage(delta):
 
 		total_damage += enemy.stats.contact_damage
 
+		knockback_direction += (
+			global_position -
+			enemy.global_position
+		).normalized()
+
 	take_damage(total_damage)
+
+	if knockback_direction.length_squared() > 0.01:
+
+		apply_knockback(
+			knockback_direction.normalized()
+			* stats.contact_knockback_force,
+			stats.hit_stun_duration
+		)

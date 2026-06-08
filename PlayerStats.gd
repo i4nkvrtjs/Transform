@@ -26,3 +26,5 @@ class_name PlayerStats
 @export var slam_radius : float = 5.0
 
 @export var slam_duration : float = 0.6
+
+@export var contact_knockback_force := 8.0

@@ -17,6 +17,7 @@ dash_duration = 0.2
 dash_cooldown = 1.0
 slam_radius = 10.0
 slam_duration = 0.6
+contact_knockback_force = 30.0
 move_speed = 10.0
 max_health = 100
 metadata/_custom_type_script = "uid://cnjj2k4d3jacw"
