@@ -27,7 +27,9 @@ enum State
 @onready var consume_sfx = $Audio/ConsumesSFX
 @onready var slam_sfx = $Audio/SlamSFX
 @onready var footstep_sfx = $Audio/FootstepSFX
-@onready var timer_anchor = $TimerAnchor
+@onready var timer_viewport = $TimerViewport
+@onready var timer_mesh = $TransformTimerPivot/TimerMesh
+@onready var timer_progress = $TimerViewport/Control/TextureProgressBar
 
 var state_machine : AnimationNodeStateMachinePlayback
 
@@ -87,6 +89,27 @@ func _ready():
 	state_machine = animation_tree.get(
 		"parameters/playback"
 	)
+
+	await get_tree().process_frame
+	var material = StandardMaterial3D.new()
+
+	material.albedo_texture = (
+		timer_viewport.get_texture()
+	)
+
+	material.shading_mode = (
+		BaseMaterial3D.SHADING_MODE_UNSHADED
+	)
+
+	material.transparency = (
+		BaseMaterial3D.TRANSPARENCY_ALPHA
+	)
+
+	material.cull_mode = BaseMaterial3D.CULL_DISABLED
+
+	timer_mesh.material_override = material
+
+	timer_mesh.visible = false
 
 func _physics_process(delta):
 
@@ -227,18 +250,24 @@ func handle_transformation(delta):
 
 	transform_timer -= delta
 
+	update_transform_timer_visual()
+
 	if transform_timer <= 0.0:
 		end_transformation()
 
 func start_transformation():
-	if shrine_director:
-		shrine_director.remove_current_shrine()
-
 	current_state = State.TRANSFORMED
 	transform_sfx.play()
 	transform_timer = (
 		stats.transformed_duration
 	)
+	
+	timer_mesh.visible = true
+	
+	shrine_arrow_pivot.visible = false
+	
+	if shrine_director:
+		shrine_director.remove_current_shrine()
 
 	state_machine.travel("Transformacion_Fisica_v2")
 
@@ -248,9 +277,11 @@ func end_transformation():
 
 	transformed_velocity = Vector3.ZERO
 
-	state_machine.travel("Transformacion_Reverse")
+	timer_mesh.visible = false
 
-	print("NORMAL")
+	shrine_arrow_pivot.visible = true
+
+	state_machine.travel("Transformacion_Reverse")
 
 func is_transformed() -> bool:
 
@@ -557,3 +588,19 @@ func add_score(amount : int):
 	score += amount
 
 	score_changed.emit(score)
+
+func update_transform_timer_visual():
+
+	if !is_transformed():
+		return
+
+	var percent = (
+		transform_timer
+		/
+		stats.transformed_duration
+	)
+
+	timer_progress.value = (
+		percent * 100.0
+	)
+	print(timer_progress.value)

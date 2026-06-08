@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://ewxpx7p2fka1"]
+[gd_scene load_steps=45 format=3 uid="uid://ewxpx7p2fka1"]
 
 [ext_resource type="PackedScene" uid="uid://bphu0xmcfy156" path="res://Assets/Enviroment/Space Station/GLB format/floor-corner.glb" id="1_6jptx"]
 [ext_resource type="Shader" uid="uid://cmd6tuo7qvxsr" path="res://Shaders/pixelation.gdshader" id="1_23yoc"]
@@ -24,7 +24,6 @@
 [ext_resource type="Script" uid="uid://bdy2y3lgdn7n2" path="res://Scenes/World/hud.gd" id="21_pqm0m"]
 [ext_resource type="PackedScene" uid="uid://hp8caecw684n" path="res://Scenes/floating_heal.tscn" id="22_w1pl2"]
 [ext_resource type="PackedScene" uid="uid://bibg04ladbv68" path="res://Assets/Enviroment/Space Station/GLB format/rail.glb" id="22_y76hn"]
-[ext_resource type="Texture2D" uid="uid://wivpecn2xyoo" path="res://Assets/CirculoBlanco1024x1024.png" id="23_pqm0m"]
 [ext_resource type="PackedScene" uid="uid://cg8jxla8sbimw" path="res://Assets/Enviroment/Space Station/GLB format/computer-system.glb" id="23_ytmut"]
 [ext_resource type="PackedScene" uid="uid://c3gj02j5464tq" path="res://Assets/Enviroment/Modular Space/GLB format/cables.glb" id="24_llg4m"]
 [ext_resource type="Texture2D" uid="uid://cgqmgw8f2q0og" path="res://Assets/LineaBlanca.png" id="24_w1pl2"]
@@ -1008,29 +1007,6 @@ anchors_preset = 0
 script = ExtResource("21_pqm0m")
 player = NodePath("../../Player")
 floating_text_scene = ExtResource("22_w1pl2")
-
-[node name="TransformTimer" type="TextureProgressBar" parent="UI/HUD"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -65.5
-offset_top = -65.0
-offset_right = 65.5
-offset_bottom = 65.0
-grow_horizontal = 2
-grow_vertical = 2
-max_value = 1.0
-step = 0.01
-fill_mode = 4
-radial_initial_angle = 180.0
-nine_patch_stretch = true
-texture_under = ExtResource("23_pqm0m")
-texture_progress = ExtResource("23_pqm0m")
-tint_under = Color(1, 1, 1, 0)
-tint_progress = Color(0, 1, 0, 1)
 
 [node name="FloatingTextContainer" type="Control" parent="UI/HUD"]
 anchors_preset = 0

@@ -4,7 +4,7 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_85vpg"]
 transparency = 1
-albedo_color = Color(1, 0, 0.352941, 0.145098)
+albedo_color = Color(0, 1, 0, 0.145098)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_lt7i8"]
 material = SubResource("StandardMaterial3D_85vpg")

@@ -6,8 +6,6 @@ extends Control
 
 @onready var health_bar = $HealthBar
 
-@onready var transform_timer = $TransformTimer
-
 @onready var floating_container = (
 	$FloatingTextContainer
 )
@@ -32,9 +30,6 @@ func _ready():
 		player.current_health,
 		player.stats.max_health
 	)
-
-func _process(_delta):
-	update_transform_timer()
 
 func _on_score_changed(score):
 	score_label.text = (
@@ -66,7 +61,7 @@ func spawn_floating_heal(
 
 	var screen_pos = (
 		camera.unproject_position(
-			player.timer_anchor.global_position
+			world_position
 		)
 	)
 
@@ -81,44 +76,6 @@ func spawn_floating_heal(
 	text.text = "+" + str(heal_amount)
 
 	text.position = screen_pos
-
-func update_transform_timer():
-
-	if !player.is_transformed():
-
-		transform_timer.visible = false
-
-		return
-
-	transform_timer.visible = player.is_transformed()
-
-	transform_timer.visible = true
-
-	transform_timer.max_value = (
-		player.stats.transformed_duration
-	)
-
-	transform_timer.value = (
-		player.transform_timer
-	)
-
-	var camera = (
-		get_viewport().get_camera_3d()
-	)
-
-	if camera == null:
-		return
-
-	var screen_pos = (
-		camera.unproject_position(
-			player.global_position
-		)
-	)
-
-	transform_timer.position = (
-		screen_pos
-		+ Vector2(60, -200)
-	)
 
 func _on_health_changed(
 	current_health,

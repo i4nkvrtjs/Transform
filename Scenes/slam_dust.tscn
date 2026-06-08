@@ -18,12 +18,16 @@ scale_min = 0.25
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c3ir5"]
 transparency = 1
-albedo_color = Color(1, 1, 0.827451, 0.815686)
+albedo_color = Color(0, 1, 0, 0.815686)
+emission_enabled = true
+emission = Color(0, 1, 0, 1)
+emission_energy_multiplier = 5.0
 
 [sub_resource type="QuadMesh" id="QuadMesh_4odua"]
 material = SubResource("StandardMaterial3D_c3ir5")
 
 [node name="SlamDust" type="GPUParticles3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00601125, -4.76837e-07, 0.00553656)
 emitting = false
 amount = 20
 lifetime = 1.2
