@@ -1005,10 +1005,10 @@ floating_text_scene = ExtResource("22_w1pl2")
 
 [node name="TransformTimer" type="TextureProgressBar" parent="UI/HUD"]
 layout_mode = 0
-offset_left = 999.0
-offset_top = 21.0
-offset_right = 1130.0
-offset_bottom = 151.0
+offset_left = 1750.0
+offset_top = 24.0
+offset_right = 1881.0
+offset_bottom = 154.0
 max_value = 1.0
 step = 0.01
 fill_mode = 4

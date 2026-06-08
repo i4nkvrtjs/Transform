@@ -12,7 +12,9 @@ enum State
 @export var stats : PlayerStats
 @export var slam_indicator_scene : PackedScene
 @export var shrine_director_path : NodePath
+@export var slam_dust_scene: PackedScene
 
+@onready var dash_particles = $DashParticles
 @onready var shrine_arrow_pivot = $ShrineArrowPivot
 @onready var animation_player : AnimationPlayer = $Visuals/Cha_42/AnimationPlayer
 @onready var visuals : Node3D = $Visuals
@@ -359,6 +361,8 @@ func start_dash():
 	if dash_cooldown_timer > 0:
 		return
 
+	dash_particles.emitting = true
+
 	var input_dir := Vector2(
 		Input.get_axis(
 			"ui_left",
@@ -405,6 +409,8 @@ func update_dash(delta):
 	)
 
 	if dash_timer <= 0.0:
+
+		dash_particles.emitting = false
 
 		velocity = Vector3.ZERO
 
@@ -460,6 +466,13 @@ func do_slam_damage():
 		) <= stats.slam_radius:
 
 			consume_enemy(enemy)
+			if slam_dust_scene:
+
+				var dust = slam_dust_scene.instantiate()
+
+				get_parent().add_child(dust)
+
+				dust.global_position = global_position
 
 func update_dash_cooldown(delta):
 
