@@ -308,6 +308,8 @@ func is_transformed() -> bool:
 
 func take_damage(amount : int):
 
+	if is_transformed():
+		return
 	if invulnerability_timer > 0:
 		return
 
