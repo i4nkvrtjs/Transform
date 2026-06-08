@@ -27,6 +27,7 @@ enum State
 @onready var consume_sfx = $Audio/ConsumesSFX
 @onready var slam_sfx = $Audio/SlamSFX
 @onready var footstep_sfx = $Audio/FootstepSFX
+@onready var timer_anchor = $TimerAnchor
 
 var state_machine : AnimationNodeStateMachinePlayback
 
@@ -230,6 +231,8 @@ func handle_transformation(delta):
 		end_transformation()
 
 func start_transformation():
+	if shrine_director:
+		shrine_director.remove_current_shrine()
 
 	current_state = State.TRANSFORMED
 	transform_sfx.play()
@@ -238,8 +241,6 @@ func start_transformation():
 	)
 
 	state_machine.travel("Transformacion_Fisica_v2")
-
-	print("TRANSFORMED")
 
 func end_transformation():
 
@@ -518,7 +519,7 @@ func update_shrine_arrow():
 
 	var shrine = shrine_director.get_current_shrine()
 
-	if shrine == null:
+	if shrine == null or is_transformed():
 
 		shrine_arrow_pivot.visible = false
 

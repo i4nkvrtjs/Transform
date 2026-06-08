@@ -66,7 +66,7 @@ func spawn_floating_heal(
 
 	var screen_pos = (
 		camera.unproject_position(
-			world_position
+			player.timer_anchor.global_position
 		)
 	)
 
@@ -89,6 +89,8 @@ func update_transform_timer():
 		transform_timer.visible = false
 
 		return
+
+	transform_timer.visible = player.is_transformed()
 
 	transform_timer.visible = true
 
@@ -115,7 +117,7 @@ func update_transform_timer():
 
 	transform_timer.position = (
 		screen_pos
-		+ Vector2(70, -180)
+		+ Vector2(60, -200)
 	)
 
 func _on_health_changed(

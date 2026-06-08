@@ -1594,7 +1594,7 @@ bones/0/name = "Bone"
 bones/0/parent = -1
 bones/0/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 bones/0/enabled = true
-bones/0/position = Vector3(0, 0.0796088, 0)
+bones/0/position = Vector3(0, 0, 0)
 bones/0/rotation = Quaternion(0, 0, 0, 1)
 bones/0/scale = Vector3(1, 1, 1)
 bones/1/name = "Bone.005"
@@ -1637,28 +1637,28 @@ bones/6/parent = 0
 bones/6/rest = Transform3D(1, 0, 2.38419e-07, 0, 1, 0, -2.38419e-07, 0, 1, 0, 1, 0)
 bones/6/enabled = true
 bones/6/position = Vector3(0, 1, 0)
-bones/6/rotation = Quaternion(0, 1.19208e-07, 0, 1)
+bones/6/rotation = Quaternion(-3.42718e-09, 1.1916e-07, -0.0287493, 0.999587)
 bones/6/scale = Vector3(1, 1, 1)
 bones/7/name = "Bone.003"
 bones/7/parent = 6
 bones/7/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.209139, 0)
 bones/7/enabled = true
 bones/7/position = Vector3(0, 0.209139, 0)
-bones/7/rotation = Quaternion(-4.93247e-08, -2.77965e-08, 0.206883, 0.978366)
+bones/7/rotation = Quaternion(-2.08309e-08, -2.84957e-08, 0.0873711, 0.996176)
 bones/7/scale = Vector3(1, 1, 1)
 bones/8/name = "Bone.002"
 bones/8/parent = 7
 bones/8/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.209139, 0)
 bones/8/enabled = true
 bones/8/position = Vector3(0, 0.209139, 0)
-bones/8/rotation = Quaternion(-9.03881e-08, -5.09375e-08, 0.379115, 0.92535)
+bones/8/rotation = Quaternion(-5.00883e-08, -5.38347e-08, 0.210086, 0.977683)
 bones/8/scale = Vector3(1, 1, 1)
 bones/9/name = "Bone.004"
 bones/9/parent = 8
 bones/9/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.209139, 0)
 bones/9/enabled = true
 bones/9/position = Vector3(0, 0.209139, 0)
-bones/9/rotation = Quaternion(-5.35931e-08, -3.0202e-08, 0.224786, 0.974408)
+bones/9/rotation = Quaternion(-1.53961e-08, -3.16167e-08, 0.0645757, 0.997913)
 bones/9/scale = Vector3(1, 1, 1)
 
 [node name="Cha" type="MeshInstance3D" parent="Visuals/Cha_42/Armature/Skeleton3D"]
@@ -1722,5 +1722,8 @@ volume_db = 18.0
 [node name="FootstepSFX" type="AudioStreamPlayer3D" parent="Audio"]
 stream = ExtResource("15_olqyp")
 volume_db = 24.0
+
+[node name="TimerAnchor" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
