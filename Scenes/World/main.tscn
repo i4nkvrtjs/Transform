@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://ewxpx7p2fka1"]
+[gd_scene load_steps=45 format=3 uid="uid://ewxpx7p2fka1"]
 
 [ext_resource type="PackedScene" uid="uid://bphu0xmcfy156" path="res://Assets/Enviroment/Space Station/GLB format/floor-corner.glb" id="1_6jptx"]
 [ext_resource type="Shader" uid="uid://cmd6tuo7qvxsr" path="res://Shaders/pixelation.gdshader" id="1_23yoc"]
@@ -29,6 +29,9 @@
 [ext_resource type="PackedScene" uid="uid://c3gj02j5464tq" path="res://Assets/Enviroment/Modular Space/GLB format/cables.glb" id="24_llg4m"]
 [ext_resource type="Texture2D" uid="uid://cgqmgw8f2q0og" path="res://Assets/LineaBlanca.png" id="24_w1pl2"]
 [ext_resource type="PackedScene" uid="uid://lasn4453t3sq" path="res://Assets/Enviroment/Modular Space/GLB format/template-floor-layer-hole.glb" id="25_qggjr"]
+[ext_resource type="Script" uid="uid://brjno3ywaqxso" path="res://Scenes/World/music_manager.gd" id="30_p7lpm"]
+[ext_resource type="AudioStream" uid="uid://5tpwgonvilxr" path="res://Assets/Music/PAKMAN PROYEKT.wav" id="31_4ra0o"]
+[ext_resource type="AudioStream" uid="uid://dg114ix26jdm3" path="res://Assets/Music/PAKMAN PROYEKT2.wav" id="32_bqd5y"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7dm0k"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -1121,5 +1124,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.7647, 0, 21.2505)
 
 [node name="SpawnPoint12" type="Marker3D" parent="SpawnPoints" groups=["spawn_point"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.866, 0, 38.6875)
+
+[node name="MusicManager" type="Node" parent="."]
+script = ExtResource("30_p7lpm")
+
+[node name="NormalMusic" type="AudioStreamPlayer" parent="MusicManager"]
+stream = ExtResource("31_4ra0o")
+
+[node name="TransformedMusic" type="AudioStreamPlayer" parent="MusicManager"]
+stream = ExtResource("32_bqd5y")
 
 [editable path="CameraRig"]
