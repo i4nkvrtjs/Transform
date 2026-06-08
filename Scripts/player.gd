@@ -307,12 +307,12 @@ func end_transformation():
 	timer_mesh.visible = false
 
 	shrine_arrow_pivot.visible = true
-	overlay_transformacion.visible = false 
-	state_machine.travel("Transformacion_Reverse")
 	if overlay_tween and overlay_tween.is_running():
 		overlay_tween.kill()
 	overlay_tween = create_tween()
-	overlay_tween.tween_property(overlay_transformacion, "modulate:a", 0.0, 2.0).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN)
+	overlay_tween.tween_property(overlay_transformacion, "modulate:a", 0.0, 0.5).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN) 
+	state_machine.travel("Transformacion_Reverse")
+
 
 func is_transformed() -> bool:
 
