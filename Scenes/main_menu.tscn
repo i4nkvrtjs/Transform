@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://biqmei2qwveb7"]
+[gd_scene load_steps=6 format=3 uid="uid://biqmei2qwveb7"]
 
 [ext_resource type="Script" uid="uid://o2213idstwed" path="res://Scenes/main_menu.gd" id="1_1ehe0"]
 [ext_resource type="Texture2D" uid="uid://kip6rn21aq3s" path="res://Assets/Screens/ScreenMenu.png" id="1_48xlc"]
-[ext_resource type="Texture2D" uid="uid://fd53hduwc0sl" path="res://Assets/Screens/TITULO.png" id="2_1ehe0"]
 [ext_resource type="Texture2D" uid="uid://cdclmxq87rrsa" path="res://Assets/Screens/PLAYBUTTONOFF.png" id="4_n45e2"]
 [ext_resource type="Texture2D" uid="uid://clg142ersxx2h" path="res://Assets/Screens/PLAYBUTTONON.png" id="5_opfnp"]
 [ext_resource type="AudioStream" uid="uid://dujqbdrv1sxhd" path="res://Assets/Music/pakman syhnth wave.wav" id="6_opfnp"]
@@ -26,18 +25,6 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_48xlc")
 expand_mode = 1
-
-[node name="Title" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.0348958
-anchor_top = -0.187037
-anchor_right = 0.625521
-anchor_bottom = 0.536111
-offset_left = 13.0
-texture = ExtResource("2_1ehe0")
-stretch_mode = 4
-metadata/_edit_use_anchors_ = true
 
 [node name="PlayButton" type="TextureButton" parent="."]
 layout_mode = 1

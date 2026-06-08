@@ -1,12 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://di1boeuevdk3o"]
+[gd_scene load_steps=3 format=3 uid="uid://di1boeuevdk3o"]
 
 [ext_resource type="Script" uid="uid://dbh7rbq0bf3tu" path="res://Scenes/camera_rig.gd" id="1_p8alh"]
+[ext_resource type="Script" uid="uid://bu7et848qkx24" path="res://Scenes/camera_shake.gd" id="2_ey644"]
 
 [node name="CameraRig" type="Node3D"]
 script = ExtResource("1_p8alh")
 follow_speed = 1.5
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="CameraShake" type="Node3D" parent="."]
+script = ExtResource("2_ey644")
+
+[node name="Camera3D" type="Camera3D" parent="CameraShake"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 18, 18)
 projection = 1
 size = 20.0

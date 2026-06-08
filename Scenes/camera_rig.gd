@@ -1,12 +1,14 @@
 extends Node3D
 
-@export var follow_speed := 5.0
+@export var follow_speed := 3.0
 
 var target : Node3D
 
 func _ready():
 
-	target = get_tree().get_first_node_in_group("player")
+	target = get_tree().get_first_node_in_group(
+		"player"
+	)
 
 func _process(delta):
 

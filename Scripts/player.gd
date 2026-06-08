@@ -13,6 +13,7 @@ enum State
 @export var slam_indicator_scene : PackedScene
 @export var shrine_director_path : NodePath
 @export var slam_dust_scene: PackedScene
+@export var camera_shake_path: NodePath
 
 @onready var dash_particles = $DashParticles
 @onready var shrine_arrow_pivot = $ShrineArrowPivot
@@ -32,6 +33,7 @@ enum State
 @onready var timer_progress = $TimerViewport/Control/TextureProgressBar
 @onready var overlay_transformacion = $"../Overlay/Overlay_Transformed"
 
+var camera_shake
 
 var state_machine : AnimationNodeStateMachinePlayback
 
@@ -63,6 +65,8 @@ var shrine_director
 
 var score : int = 0
 
+var visual_base_scale : Vector3 = Vector3.ONE
+
 signal score_changed(score)
 
 signal health_changed(current_health, max_health)
@@ -76,6 +80,10 @@ func _ready():
 	current_health = stats.max_health
 
 	shrine_director = get_node_or_null(shrine_director_path)
+
+	camera_shake = get_node_or_null(camera_shake_path)
+
+	visual_base_scale = visuals.scale
 
 	health_changed.emit(
 		current_health,
@@ -310,13 +318,6 @@ func take_damage(amount : int):
 		"TakeDamage"
 	)
 
-	print(
-		"HP: ",
-		current_health,
-		"/",
-		stats.max_health
-	)
-
 	if current_health <= 0:
 
 		die()
@@ -336,6 +337,8 @@ func heal(amount : int):
 func consume_enemy(enemy):
 
 	add_score(enemy.stats.score_value)
+
+	play_consume_pulse()
 
 	enemy_consumed.emit(
 		enemy.global_position,
@@ -529,6 +532,18 @@ func do_slam_damage():
 
 		dust.global_position = global_position
 
+	if camera_shake:
+		camera_shake.add_trauma(10.0)
+	Engine.time_scale = 0.05
+
+	await get_tree().create_timer(
+		0.07,
+		true,
+		false,
+		true
+	).timeout
+
+	Engine.time_scale = 1.0
 	slam_sfx.play()
 
 	var enemies = get_tree().get_nodes_in_group(
@@ -608,4 +623,23 @@ func update_transform_timer_visual():
 	timer_progress.value = (
 		percent * 100.0
 	)
-	print(timer_progress.value)
+
+func play_consume_pulse():
+
+	var tween = create_tween()
+
+	visuals.scale = visual_base_scale
+
+	tween.tween_property(
+		visuals,
+		"scale",
+		visual_base_scale * 1.25,
+		0.08
+	)
+
+	tween.tween_property(
+		visuals,
+		"scale",
+		visual_base_scale,
+		0.15
+	)
