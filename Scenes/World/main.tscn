@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://ewxpx7p2fka1"]
+[gd_scene load_steps=49 format=3 uid="uid://ewxpx7p2fka1"]
 
 [ext_resource type="PackedScene" uid="uid://bphu0xmcfy156" path="res://Assets/Enviroment/Space Station/GLB format/floor-corner.glb" id="1_6jptx"]
 [ext_resource type="Shader" uid="uid://cmd6tuo7qvxsr" path="res://Shaders/pixelation.gdshader" id="1_23yoc"]
@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://6p0ign7ne348" path="res://Assets/Enviroment/Space Station/GLB format/floor-panel.glb" id="3_yteiy"]
 [ext_resource type="PackedScene" uid="uid://di1boeuevdk3o" path="res://Scenes/camera_rig.tscn" id="4_xhtl2"]
 [ext_resource type="PackedScene" uid="uid://dc3pcs27x45mb" path="res://Scenes/spawn_director.tscn" id="5_by2pg"]
-[ext_resource type="PackedScene" path="res://Scenes/shrine_director.tscn" id="6_23yoc"]
+[ext_resource type="PackedScene" uid="uid://csqnwssi0l2bs" path="res://Scenes/shrine_director.tscn" id="6_23yoc"]
 [ext_resource type="PackedScene" uid="uid://cwq0ea10kkja7" path="res://Assets/Enviroment/Space Station/GLB format/floor-detail.glb" id="10_w7l72"]
 [ext_resource type="PackedScene" uid="uid://cgdil5hr7t5om" path="res://Assets/Enviroment/Space Station/GLB format/wall-banner.glb" id="11_g3oxa"]
 [ext_resource type="PackedScene" uid="uid://bnrmcao75xr3k" path="res://Assets/Enviroment/Space Station/GLB format/wall-corner-round-banner.glb" id="12_ombbc"]
@@ -25,13 +25,16 @@
 [ext_resource type="PackedScene" uid="uid://hp8caecw684n" path="res://Scenes/floating_heal.tscn" id="22_w1pl2"]
 [ext_resource type="PackedScene" uid="uid://bibg04ladbv68" path="res://Assets/Enviroment/Space Station/GLB format/rail.glb" id="22_y76hn"]
 [ext_resource type="PackedScene" uid="uid://cg8jxla8sbimw" path="res://Assets/Enviroment/Space Station/GLB format/computer-system.glb" id="23_ytmut"]
+[ext_resource type="Texture2D" uid="uid://cls1ag15qsquu" path="res://Assets/Screens/TUTORIAL.png" id="24_4ra0o"]
+[ext_resource type="Script" uid="uid://pk36rfdu4dv0" path="res://Scenes/World/tutorial_overlay.gd" id="24_6ny57"]
 [ext_resource type="PackedScene" uid="uid://c3gj02j5464tq" path="res://Assets/Enviroment/Modular Space/GLB format/cables.glb" id="24_llg4m"]
 [ext_resource type="Texture2D" uid="uid://cgqmgw8f2q0og" path="res://Assets/LineaBlanca.png" id="24_w1pl2"]
+[ext_resource type="Texture2D" uid="uid://dbaasvemm2syq" path="res://Assets/Screens/CONTINUAR.png" id="25_bqd5y"]
 [ext_resource type="PackedScene" uid="uid://lasn4453t3sq" path="res://Assets/Enviroment/Modular Space/GLB format/template-floor-layer-hole.glb" id="25_qggjr"]
 [ext_resource type="Texture2D" uid="uid://dsisdx58n37m7" path="res://Assets/Screens/Transformacion_Overlay.png" id="26_p7lpm"]
-[ext_resource type="Script" path="res://Scenes/World/music_manager.gd" id="30_p7lpm"]
-[ext_resource type="AudioStream" uid="uid://5tpwgonvilxr" path="res://Assets/Music/PAKMAN PROYEKT.wav" id="31_4ra0o"]
-[ext_resource type="AudioStream" uid="uid://dg114ix26jdm3" path="res://Assets/Music/PAKMAN PROYEKT2.wav" id="32_bqd5y"]
+[ext_resource type="AudioStream" uid="uid://dmw2lmnby6qwx" path="res://Assets/Music/PAKMAN PROYEKT 3.0 - chikito.wav" id="30_4ra0o"]
+[ext_resource type="Script" uid="uid://brjno3ywaqxso" path="res://Scenes/World/music_manager.gd" id="30_p7lpm"]
+[ext_resource type="AudioStream" uid="uid://d3s55xoqj84l2" path="res://Assets/Music/PAKMAN PROYEKT 3.0 - grande.wav" id="31_p7lpm"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7dm0k"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -1036,6 +1039,39 @@ offset_bottom = 90.0
 text = "Score: 0"
 label_settings = SubResource("LabelSettings_p7lpm")
 
+[node name="TutorialOverlay" type="Control" parent="UI"]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("24_6ny57")
+
+[node name="TextureRect" type="TextureRect" parent="UI/TutorialOverlay"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.140104
+anchor_top = 0.106481
+anchor_right = 0.886458
+anchor_bottom = 0.801852
+offset_right = -0.00012207
+offset_bottom = -6.10352e-05
+texture = ExtResource("24_4ra0o")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Continue" type="TextureRect" parent="UI/TutorialOverlay"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.366146
+anchor_top = 0.743519
+anchor_right = 0.632812
+anchor_bottom = 0.993519
+texture = ExtResource("25_bqd5y")
+metadata/_edit_use_anchors_ = true
+
 [node name="Player" parent="." instance=ExtResource("1_n1kio")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.333581, 0)
 shrine_director_path = NodePath("../ShrineDirector")
@@ -1048,7 +1084,7 @@ follow_speed = 3.0
 [node name="SpawnDirector" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_by2pg")]
 enemy_scene = ExtResource("2_ntgcc")
 player = NodePath("../Player")
-spawn_interval = 0.5
+spawn_interval = 1.0
 max_enemies = 60
 difficulty_interval = 15.0
 spawn_acceleration = 0.8
@@ -1126,16 +1162,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.7647, 0, 21.2505)
 [node name="SpawnPoint12" type="Marker3D" parent="SpawnPoints" groups=["spawn_point"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.866, 0, 38.6875)
 
-[node name="MusicManager" type="Node" parent="."]
+[node name="MusicManager" type="Node" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("30_p7lpm")
+player = NodePath("../Player")
 
 [node name="NormalMusic" type="AudioStreamPlayer" parent="MusicManager"]
-stream = ExtResource("31_4ra0o")
-volume_db = -12.0
+stream = ExtResource("30_4ra0o")
 
 [node name="TransformedMusic" type="AudioStreamPlayer" parent="MusicManager"]
-stream = ExtResource("32_bqd5y")
-volume_db = -12.0
+stream = ExtResource("31_p7lpm")
 
 [node name="Overlay" type="CanvasLayer" parent="."]
 layer = 10
@@ -1147,5 +1182,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("26_p7lpm")
+metadata/_edit_lock_ = true
 
 [editable path="CameraRig"]

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dmw2lmnby6qwx"
+path="res://.godot/imported/PAKMAN PROYEKT 3.0 - chikito.wav-6e2cdd8fc16ae991a16a2ca9983686c4.sample"
+
+[deps]
+
+source_file="res://Assets/Music/PAKMAN PROYEKT 3.0 - chikito.wav"
+dest_files=["res://.godot/imported/PAKMAN PROYEKT 3.0 - chikito.wav-6e2cdd8fc16ae991a16a2ca9983686c4.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=2
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,8 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://fl8yppvpylmp"]
+[gd_scene load_steps=9 format=3 uid="uid://fl8yppvpylmp"]
 
 [ext_resource type="Script" uid="uid://bx2mct1g6jsmy" path="res://Scenes/game_over.gd" id="1_8fo1c"]
 [ext_resource type="Texture2D" uid="uid://b5v077hrwuaji" path="res://Assets/Screens/DeathScreen.png" id="1_ojehl"]
 [ext_resource type="AudioStream" uid="uid://dujqbdrv1sxhd" path="res://Assets/Music/pakman syhnth wave.wav" id="3_ek8ke"]
+[ext_resource type="Texture2D" uid="uid://b1wer8bo2a5w" path="res://Assets/Screens/RETRYON.png" id="3_gjtdd"]
+[ext_resource type="AudioStream" uid="uid://c7h3w231c1of4" path="res://Assets/SFX/button.wav" id="4_eoghk"]
+[ext_resource type="Texture2D" uid="uid://ckyiyvuvrswdw" path="res://Assets/Screens/RETRYOFF.png" id="4_uylih"]
+[ext_resource type="Texture2D" uid="uid://c30k2e61nsp0c" path="res://Assets/Screens/QUITON.png" id="5_3817r"]
+[ext_resource type="Texture2D" uid="uid://i58ckmty5ht8" path="res://Assets/Screens/QUITOFF.png" id="6_mitgx"]
 
 [node name="GameOver" type="Control"]
 layout_mode = 3
@@ -40,27 +45,40 @@ theme_override_font_sizes/font_size = 105
 text = "SCORE: 0"
 metadata/_edit_use_anchors_ = true
 
-[node name="Button" type="TextureButton" parent="."]
+[node name="RetryButton" type="TextureButton" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.794792
-anchor_top = 0.733333
-anchor_right = 0.935125
-anchor_bottom = 0.858333
+anchor_left = 0.430208
+anchor_top = 0.336111
+anchor_right = 0.579396
+anchor_bottom = 0.469444
 offset_right = 0.559982
+texture_normal = ExtResource("3_gjtdd")
+texture_pressed = ExtResource("3_gjtdd")
+texture_hover = ExtResource("4_uylih")
+ignore_texture_size = true
+stretch_mode = 4
 metadata/_edit_use_anchors_ = true
 
-[node name="RetryButton" type="Button" parent="."]
+[node name="QuitButton" type="TextureButton" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.732813
-anchor_top = 0.70463
-anchor_right = 0.945833
-anchor_bottom = 0.860185
-offset_right = 8.0
-offset_bottom = 8.0
-text = "RETRY"
+anchor_left = 0.813542
+anchor_top = 0.741667
+anchor_right = 0.961229
+anchor_bottom = 0.889556
+offset_right = -0.560013
+offset_bottom = 0.279991
+texture_normal = ExtResource("5_3817r")
+texture_pressed = ExtResource("5_3817r")
+texture_hover = ExtResource("6_mitgx")
+ignore_texture_size = true
+stretch_mode = 4
 metadata/_edit_use_anchors_ = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_ek8ke")
+
+[node name="AudioButton" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_eoghk")
+volume_db = 12.0
