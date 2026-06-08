@@ -20,6 +20,7 @@ enum State
 @onready var visuals : Node3D = $Visuals
 @onready var damage_area : Area3D = $Area3D
 @onready var animation_tree = $Visuals/Cha_42/AnimationTree
+@onready var dash_sfx = $Audio/DashSFX
 
 var state_machine : AnimationNodeStateMachinePlayback
 
@@ -360,7 +361,8 @@ func start_dash():
 
 	if dash_cooldown_timer > 0:
 		return
-
+	
+	dash_sfx.play()
 	dash_particles.emitting = true
 
 	var input_dir := Vector2(
