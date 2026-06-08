@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://ewxpx7p2fka1"]
+[gd_scene load_steps=46 format=3 uid="uid://ewxpx7p2fka1"]
 
 [ext_resource type="PackedScene" uid="uid://bphu0xmcfy156" path="res://Assets/Enviroment/Space Station/GLB format/floor-corner.glb" id="1_6jptx"]
 [ext_resource type="Shader" uid="uid://cmd6tuo7qvxsr" path="res://Shaders/pixelation.gdshader" id="1_23yoc"]
@@ -72,6 +72,9 @@ shader = ExtResource("1_23yoc")
 shader_parameter/pixel_size = 4.0
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_jyfha"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_p7lpm"]
+font_size = 37
 
 [node name="Main" type="Node3D"]
 
@@ -1008,10 +1011,10 @@ floating_text_scene = ExtResource("22_w1pl2")
 
 [node name="TransformTimer" type="TextureProgressBar" parent="UI/HUD"]
 layout_mode = 0
-offset_left = 1750.0
-offset_top = 24.0
-offset_right = 1881.0
-offset_bottom = 154.0
+offset_left = 1077.0
+offset_top = 557.0
+offset_right = 1208.0
+offset_bottom = 687.0
 max_value = 1.0
 step = 0.01
 fill_mode = 4
@@ -1029,16 +1032,25 @@ offset_bottom = 40.0
 
 [node name="HealthBar" type="TextureProgressBar" parent="UI/HUD"]
 layout_mode = 0
-offset_left = 20.0
-offset_top = -56.0
-offset_right = 440.0
-offset_bottom = 167.0
+offset_left = 969.0
+offset_top = -55.0
+offset_right = 1389.0
+offset_bottom = 168.0
 fill_mode = 1
 nine_patch_stretch = true
 texture_under = ExtResource("24_w1pl2")
 texture_progress = ExtResource("24_w1pl2")
 tint_under = Color(1, 0, 0, 1)
 tint_progress = Color(0, 1, 0, 1)
+
+[node name="ScoreLabel" type="Label" parent="UI/HUD"]
+layout_mode = 0
+offset_left = 74.0
+offset_top = 35.0
+offset_right = 233.0
+offset_bottom = 90.0
+text = "Score: 0"
+label_settings = SubResource("LabelSettings_p7lpm")
 
 [node name="Player" parent="." instance=ExtResource("1_n1kio")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.333581, 0)

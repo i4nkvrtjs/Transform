@@ -56,6 +56,10 @@ var slam_active:= false
 
 var shrine_director
 
+var score : int = 0
+
+signal score_changed(score)
+
 signal health_changed(current_health, max_health)
 
 signal enemy_consumed(world_position, heal_amount)
@@ -296,11 +300,11 @@ func heal(amount : int):
 
 func consume_enemy(enemy):
 
-	heal(enemy.stats.heal_on_consumed)
+	add_score(enemy.stats.score_value)
 
 	enemy_consumed.emit(
 		enemy.global_position,
-		enemy.stats.heal_on_consumed
+		enemy.stats.score_value
 	)
 	consume_sfx.play()
 	enemy.die()
@@ -377,7 +381,15 @@ func start_dash():
 
 	if dash_cooldown_timer > 0:
 		return
-	
+
+	var move_velocity = Vector2(
+		velocity.x,
+		velocity.z
+	)
+
+	if move_velocity.length() < 0.1:
+		return
+
 	dash_sfx.play()
 	dash_particles.emitting = true
 
@@ -446,7 +458,6 @@ func start_slam():
 	velocity = Vector3.ZERO
 
 	state_machine.start("Slam")
-	#animation_player.play("slam")
 
 func update_slam(delta):
 
@@ -539,3 +550,9 @@ func update_shrine_arrow():
 		3.0 +
 		sin(time * 4.0) * 0.25
 	)
+
+func add_score(amount : int):
+
+	score += amount
+
+	score_changed.emit(score)

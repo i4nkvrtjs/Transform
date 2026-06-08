@@ -7,4 +7,4 @@ class_name EnemyStats
 
 @export var flee_multiplier : float = 1.0
 
-@export var heal_on_consumed := 10
+@export var score_value := 10

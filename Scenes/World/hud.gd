@@ -12,32 +12,25 @@ extends Control
 	$FloatingTextContainer
 )
 
+@onready var score_label = $ScoreLabel
+
 func _ready():
 
-	player.health_changed.connect(
-		_on_health_changed
+	player.score_changed.connect(
+		_on_score_changed
 	)
 
 	player.enemy_consumed.connect(
 		_on_enemy_consumed
 	)
-	
-	_on_health_changed(
-		player.current_health,
-		player.stats.max_health
-	)
 
 func _process(_delta):
 	update_transform_timer()
 
-func _on_health_changed(
-	current_health,
-	max_health
-):
-
-	health_bar.max_value = max_health
-
-	health_bar.value = current_health
+func _on_score_changed(score):
+	score_label.text = (
+		"SCORE: " + str(score)
+	)
 
 func _on_enemy_consumed(
 	world_position,
