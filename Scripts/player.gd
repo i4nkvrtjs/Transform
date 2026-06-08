@@ -33,6 +33,12 @@ enum State
 @onready var timer_progress = $TimerViewport/Control/TextureProgressBar
 @onready var overlay_transformacion = $"../Overlay/Overlay_Transformed"
 
+var touching_enemies : Array = []
+
+var damage_tick_timer : float = 0.0
+
+var damage_tick_interval : float = 0.25
+
 var camera_shake
 
 var state_machine : AnimationNodeStateMachinePlayback
@@ -133,6 +139,8 @@ func _physics_process(delta):
 		footstep_sfx.stop()
 
 	handle_transformation(delta)
+	
+	update_contact_damage(delta)
 
 	update_hit_stun(delta)
 
@@ -335,6 +343,7 @@ func heal(amount : int):
 	)
 
 func consume_enemy(enemy):
+	unregister_enemy_contact(enemy)
 
 	add_score(enemy.stats.score_value)
 
@@ -643,3 +652,37 @@ func play_consume_pulse():
 		visual_base_scale,
 		0.15
 	)
+
+func register_enemy_contact(enemy):
+
+	if enemy in touching_enemies:
+		return
+
+	touching_enemies.append(enemy)
+
+func unregister_enemy_contact(enemy):
+
+	touching_enemies.erase(enemy)
+
+func update_contact_damage(delta):
+
+	if touching_enemies.is_empty():
+		return
+
+	damage_tick_timer -= delta
+
+	if damage_tick_timer > 0:
+		return
+
+	damage_tick_timer = damage_tick_interval
+
+	var total_damage := 0
+
+	for enemy in touching_enemies:
+
+		if !is_instance_valid(enemy):
+			continue
+
+		total_damage += enemy.stats.contact_damage
+
+	take_damage(total_damage)

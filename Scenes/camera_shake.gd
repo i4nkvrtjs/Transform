@@ -26,4 +26,3 @@ func add_trauma(amount : float):
 		trauma + amount,
 		1.0
 	)
-	print("TRAUMA:", trauma)

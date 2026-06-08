@@ -51,11 +51,6 @@ func update_difficulty(delta):
 
 	max_enemies += 5
 
-	print("Difficulty Increased")
-	print("Spawn Interval: ", spawn_interval)
-	print("Max Enemies: ", max_enemies)
-
-
 func spawn_enemy():
 
 	var point = get_valid_spawn_point()

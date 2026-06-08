@@ -35,6 +35,9 @@ func _ready():
 	hit_area.body_entered.connect(
 		_on_hit_area_body_entered
 	)
+	hit_area.body_exited.connect(
+		_on_hit_area_body_exited
+	)
 
 func _physics_process(_delta):
 
@@ -100,31 +103,10 @@ func move_enemy():
 	velocity = direction * speed
 
 func die():
+	if player:
+		player.unregister_enemy_contact(self)
 
 	queue_free()
-
-func _on_hit_area_body_entered(body):
-
-	if !body.is_in_group("player"):
-		return
-
-	if body.is_transformed():
-		return
-
-	body.take_damage(
-		stats.contact_damage
-	)
-
-	var knockback_direction = (
-		body.global_position -
-		global_position
-	).normalized()
-
-	body.apply_knockback(
-	knockback_direction *
-	stats.knockback_force,
-	body.stats.hit_stun_duration
-	)
 
 func update_visual_rotation(direction : Vector3):
 
@@ -150,3 +132,17 @@ func play_animation(anim_name : String):
 	current_animation = anim_name
 
 	animation_player.play(anim_name)
+
+func _on_hit_area_body_entered(body):
+
+	if !body.is_in_group("player"):
+		return
+
+	body.register_enemy_contact(self)
+
+func _on_hit_area_body_exited(body):
+
+	if !body.is_in_group("player"):
+		return
+
+	body.unregister_enemy_contact(self)
