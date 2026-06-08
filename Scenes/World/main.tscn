@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://6p0ign7ne348" path="res://Assets/Enviroment/Space Station/GLB format/floor-panel.glb" id="3_yteiy"]
 [ext_resource type="PackedScene" uid="uid://di1boeuevdk3o" path="res://Scenes/camera_rig.tscn" id="4_xhtl2"]
 [ext_resource type="PackedScene" uid="uid://dc3pcs27x45mb" path="res://Scenes/spawn_director.tscn" id="5_by2pg"]
-[ext_resource type="PackedScene" path="res://Scenes/shrine_director.tscn" id="6_23yoc"]
+[ext_resource type="PackedScene" uid="uid://csqnwssi0l2bs" path="res://Scenes/shrine_director.tscn" id="6_23yoc"]
 [ext_resource type="PackedScene" uid="uid://cwq0ea10kkja7" path="res://Assets/Enviroment/Space Station/GLB format/floor-detail.glb" id="10_w7l72"]
 [ext_resource type="PackedScene" uid="uid://cgdil5hr7t5om" path="res://Assets/Enviroment/Space Station/GLB format/wall-banner.glb" id="11_g3oxa"]
 [ext_resource type="PackedScene" uid="uid://bnrmcao75xr3k" path="res://Assets/Enviroment/Space Station/GLB format/wall-corner-round-banner.glb" id="12_ombbc"]
@@ -21,7 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://bpa5bjf5w4dnm" path="res://Assets/Enviroment/Space Station/GLB format/pipe-ring.glb" id="19_llg4m"]
 [ext_resource type="PackedScene" uid="uid://cjsids21nnlsp" path="res://Assets/Enviroment/Space Station/GLB format/wall.glb" id="20_qggjr"]
 [ext_resource type="PackedScene" uid="uid://ee874q3vtgxe" path="res://Assets/Enviroment/Space Station/GLB format/wall-corner-round.glb" id="21_fegd5"]
-[ext_resource type="Script" path="res://Scenes/World/hud.gd" id="21_pqm0m"]
+[ext_resource type="Script" uid="uid://bdy2y3lgdn7n2" path="res://Scenes/World/hud.gd" id="21_pqm0m"]
 [ext_resource type="PackedScene" uid="uid://hp8caecw684n" path="res://Scenes/floating_heal.tscn" id="22_w1pl2"]
 [ext_resource type="PackedScene" uid="uid://bibg04ladbv68" path="res://Assets/Enviroment/Space Station/GLB format/rail.glb" id="22_y76hn"]
 [ext_resource type="Texture2D" uid="uid://wivpecn2xyoo" path="res://Assets/CirculoBlanco1024x1024.png" id="23_pqm0m"]
@@ -1005,10 +1005,10 @@ floating_text_scene = ExtResource("22_w1pl2")
 
 [node name="TransformTimer" type="TextureProgressBar" parent="UI/HUD"]
 layout_mode = 0
-offset_left = 2210.0
-offset_top = 21.0
-offset_right = 2341.0
-offset_bottom = 151.0
+offset_left = 1750.0
+offset_top = 24.0
+offset_right = 1881.0
+offset_bottom = 154.0
 max_value = 1.0
 step = 0.01
 fill_mode = 4
