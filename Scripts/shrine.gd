@@ -8,4 +8,5 @@ func _on_body_entered(body):
 
 		body.start_transformation()
 		shrine_consumed.emit()
+		body.shrine_sfx.play()
 		queue_free()

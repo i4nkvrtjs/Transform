@@ -21,6 +21,12 @@ enum State
 @onready var damage_area : Area3D = $Area3D
 @onready var animation_tree = $Visuals/Cha_42/AnimationTree
 @onready var dash_sfx = $Audio/DashSFX
+@onready var hit_sfx = $Audio/HitSFX
+@onready var transform_sfx = $Audio/TransformSFX
+@onready var shrine_sfx = $Audio/ShrineSFX
+@onready var consume_sfx = $Audio/ConsumesSFX
+@onready var slam_sfx = $Audio/SlamSFX
+@onready var footstep_sfx = $Audio/FootstepSFX
 
 var state_machine : AnimationNodeStateMachinePlayback
 
@@ -78,6 +84,14 @@ func _ready():
 	)
 
 func _physics_process(delta):
+
+	var moving : bool = velocity.length() > 5
+
+	if moving:
+		if !footstep_sfx.playing:
+			footstep_sfx.play()
+	else:
+		footstep_sfx.stop()
 
 	handle_transformation(delta)
 
@@ -214,7 +228,7 @@ func handle_transformation(delta):
 func start_transformation():
 
 	current_state = State.TRANSFORMED
-
+	transform_sfx.play()
 	transform_timer = (
 		stats.transformed_duration
 	)
@@ -242,6 +256,8 @@ func take_damage(amount : int):
 	if invulnerability_timer > 0:
 		return
 
+	hit_sfx.play()
+	
 	invulnerability_timer = stats.invulnerability_time
 
 	current_health -= amount
@@ -286,7 +302,7 @@ func consume_enemy(enemy):
 		enemy.global_position,
 		enemy.stats.heal_on_consumed
 	)
-
+	consume_sfx.play()
 	enemy.die()
 
 func apply_knockback(
@@ -457,10 +473,19 @@ func do_slam_damage():
 
 		indicator.setup(stats.slam_radius)
 
+	if slam_dust_scene:
+
+		var dust = slam_dust_scene.instantiate()
+
+		get_parent().add_child(dust)
+
+		dust.global_position = global_position
+
+	slam_sfx.play()
+
 	var enemies = get_tree().get_nodes_in_group(
 		"enemy"
 	)
-
 	for enemy in enemies:
 
 		if enemy.global_position.distance_to(
@@ -468,13 +493,6 @@ func do_slam_damage():
 		) <= stats.slam_radius:
 
 			consume_enemy(enemy)
-			if slam_dust_scene:
-
-				var dust = slam_dust_scene.instantiate()
-
-				get_parent().add_child(dust)
-
-				dust.global_position = global_position
 
 func update_dash_cooldown(delta):
 
