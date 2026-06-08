@@ -1011,10 +1011,10 @@ floating_text_scene = ExtResource("22_w1pl2")
 
 [node name="TransformTimer" type="TextureProgressBar" parent="UI/HUD"]
 layout_mode = 0
-offset_left = 1077.0
-offset_top = 557.0
-offset_right = 1208.0
-offset_bottom = 687.0
+offset_left = 1122.0
+offset_top = 590.0
+offset_right = 1253.0
+offset_bottom = 720.0
 max_value = 1.0
 step = 0.01
 fill_mode = 4
@@ -1063,6 +1063,10 @@ visible = false
 enemy_scene = ExtResource("2_ntgcc")
 player = NodePath("../Player")
 camera = NodePath("../CameraRig/Camera3D")
+spawn_interval = 0.5
+max_enemies = 60
+difficulty_interval = 15.0
+spawn_acceleration = 0.8
 
 [node name="ShrineDirector" parent="." instance=ExtResource("6_23yoc")]
 
