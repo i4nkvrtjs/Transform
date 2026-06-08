@@ -13,7 +13,8 @@ config_version=5
 config/name="Transform"
 run/main_scene="uid://ewxpx7p2fka1"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://cfu1vda7nq4c7"
+config/windows_native_icon="res://Assets/Iconos/SlimeICON.ico"
 
 [display]
 
