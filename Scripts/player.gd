@@ -30,6 +30,8 @@ enum State
 @onready var timer_viewport = $TimerViewport
 @onready var timer_mesh = $TransformTimerPivot/TimerMesh
 @onready var timer_progress = $TimerViewport/Control/TextureProgressBar
+@onready var overlay_transformacion = $"../Overlay/Overlay_Transformed"
+
 
 var state_machine : AnimationNodeStateMachinePlayback
 
@@ -110,6 +112,7 @@ func _ready():
 	timer_mesh.material_override = material
 
 	timer_mesh.visible = false
+	overlay_transformacion.visible = false 
 
 func _physics_process(delta):
 
@@ -265,7 +268,7 @@ func start_transformation():
 	timer_mesh.visible = true
 	
 	shrine_arrow_pivot.visible = false
-	
+	overlay_transformacion.visible = true 
 	if shrine_director:
 		shrine_director.remove_current_shrine()
 
@@ -280,7 +283,7 @@ func end_transformation():
 	timer_mesh.visible = false
 
 	shrine_arrow_pivot.visible = true
-
+	overlay_transformacion.visible = false 
 	state_machine.travel("Transformacion_Reverse")
 
 func is_transformed() -> bool:
