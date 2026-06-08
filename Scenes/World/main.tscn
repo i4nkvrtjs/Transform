@@ -1058,6 +1058,7 @@ shrine_director_path = NodePath("../ShrineDirector")
 
 [node name="CameraRig" parent="." instance=ExtResource("4_xhtl2")]
 visible = false
+follow_speed = 3.0
 
 [node name="SpawnDirector" parent="." node_paths=PackedStringArray("player", "camera") instance=ExtResource("5_by2pg")]
 enemy_scene = ExtResource("2_ntgcc")
