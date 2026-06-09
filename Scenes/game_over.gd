@@ -2,6 +2,7 @@ extends Control
 
 @onready var retry_button = $RetryButton
 @onready var quit_button = $QuitButton
+@onready var score_label = $ScoreLabel
 
 var retry_normal
 var retry_hover
@@ -10,6 +11,8 @@ var quit_normal
 var quit_hover
 
 func _ready():
+
+	score_label.text = "SCORE: " + str(GameData.final_score)
 
 	retry_normal = retry_button.texture_normal
 	retry_hover = retry_button.texture_hover
